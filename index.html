@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Museum Quiz</title>
+  <title>Museum Quest</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
@@ -353,13 +353,13 @@
 <body>
 
 <header>
-  <h1>&#9670; Museum Quiz &#9670;</h1>
+  <h1>&#9670; Museum Quest &#9670;</h1>
   <p>Entdecken Sie die Schätze unserer Sammlung</p>
 </header>
 
 <nav>
   <button class="active" onclick="showPanel('sammlung', this)">Sammlung</button>
-  <button onclick="showPanel('quiz', this)">Quiz</button>
+  <button onclick="showPanel('quiz', this)">Quest</button>
   <button onclick="showPanel('ueber', this)">Über</button>
 </nav>
 
@@ -389,9 +389,9 @@
     <div id="quiz-start">
       <div class="card">
         <h2>Wissen auf die Probe stellen</h2>
-        <p class="about-text">Testen Sie Ihr Wissen über die Objekte der Sammlung. Das Quiz generiert automatisch Fragen aus den geladenen Daten.</p>
+        <p class="about-text">Testen Sie Ihr Wissen über die Objekte der Sammlung. Der Quest generiert automatisch Fragen aus den geladenen Daten.</p>
         <div class="btn-row">
-          <button class="btn" onclick="startQuiz()">Quiz starten</button>
+          <button class="btn" onclick="startQuiz()">Quest starten</button>
         </div>
         <p id="quiz-hint" style="text-align:center; margin-top:1rem; font-style:italic; color:var(--muted); font-size:0.9rem;"></p>
       </div>
@@ -434,8 +434,8 @@
     <div class="card">
       <h2>Über diese App</h2>
       <p class="about-text">
-        Dieses Museum Quiz ist eine <strong>Progressive Web App</strong> – sie kann direkt auf dem Homescreen installiert werden und funktioniert auch offline.<br><br>
-        Laden Sie Ihre eigene <strong>sammlung.json</strong> hoch, um die Objekte Ihrer Sammlung zu durchsuchen und daraus automatisch ein Quiz zu generieren.<br><br>
+        Dieses Museum Quest ist eine <strong>Progressive Web App</strong> – sie kann direkt auf dem Homescreen installiert werden und funktioniert auch offline.<br><br>
+        Laden Sie Ihre eigene <strong>sammlung.json</strong> hoch, um die Objekte Ihrer Sammlung zu durchsuchen und daraus automatisch einen Quest zu generieren.<br><br>
         Die JSON-Datei sollte Objekte mit den Feldern <strong>titel</strong>, <strong>künstler</strong> und <strong>jahr</strong> enthalten.
       </p>
     </div>
@@ -455,7 +455,7 @@
 </main>
 
 <footer>
-  &copy; Museum Quiz &nbsp;·&nbsp; Eine Progressive Web App
+  &copy; Museum Quest &nbsp;·&nbsp; Eine Progressive Web App
 </footer>
 
 <script>
