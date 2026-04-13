@@ -15,25 +15,19 @@ Beispiele:
 - Sammlung eines Museums und Quiz-Abfrage
 
 
-### Die 3 Zutaten einer PWA
-
-- manifest.json – beschreibt die App (Name, Icon, Farben)
-- service-worker.js – macht die App offline-fähig (speichert Dateien im Cache)
-- HTTPS – Pflicht für PWAs, GitHub Pages liefert das automatisch ✓
-
 
 Daten sammeln
 ================================
-- Scrappen von einer Museumsseite um eine Sammlung von Werken zu generieren? Code von anderem Kurs schon geschrieben
-- Welches Format um Daten einzuspielen? JSON
-- Spielealgorithmus für automatische Rätsel erstellen? Leider nur mit API und KI möglich und dafür zu aufwendig
-- Layout normal Frage und Antworten Felder
+- Scrappen von einer Museumsseite um eine Sammlung von Werken zu generieren.
+- Spielealgorithmus für automatische Rätsel erstellen.
+-  Layout normal Frage und Antworten Felder
 - Spielername
 - Punkte sammeln
+  
 ## So würde mein Quiz-Ablauf aussehen
 1. Daten laden
 Entweder lädst du deine sammlung.json hoch, oder du startest mit den Beispieldaten. Das Spiel liest dann alle Objekte ein (Titel, Künstler, Jahr).
-????Code für das scraping oder alles über die KI als Json generieren?????
+
 
 
 2. Fragen generieren
