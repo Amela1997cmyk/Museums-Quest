@@ -1,1 +1,182 @@
-
+[
+  {
+    "titel": "Kunstkammer Wien – Die Saliera",
+    "künstler": "Benvenuto Cellini",
+    "jahr": "1540–1543",
+    "kategorie": "Goldschmiedekunst",
+    "sammlung": "Kunstkammer Wien",
+    "beschreibung": "Goldenes Salzfass, eines der bedeutendsten Goldschmiedewerke der Renaissance.",
+    "bild_url": "https://www.khm.at/fileadmin/_processed_/7/8/csm_KK_881_012006_14_c5cb2bf737.webp"
+  },
+  {
+    "titel": "Turmbau zu Babel",
+    "künstler": "Pieter Bruegel d. Ä.",
+    "jahr": "1563",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Monumentales Ölgemälde auf Holz, eines der bekanntesten Werke Bruegels.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/2/6/csm_GG_1026_2018_CD_web1_3a75181c67.webp"
+  },
+  {
+    "titel": "Die Jägerin Diana",
+    "künstler": "Jan van den Hoecke",
+    "jahr": "um 1640",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Barockgemälde der Göttin Diana als Jägerin.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Madonna im Grünen",
+    "künstler": "Raffael",
+    "jahr": "1505–1506",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Ölgemälde auf Holz, zeigt Maria mit dem Jesuskind und dem Johannesknaben in einer Landschaft.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Bildnis des Künstlers",
+    "künstler": "Albrecht Dürer",
+    "jahr": "1498",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Frühes Selbstporträt Dürers im Alter von 26 Jahren.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Susanna im Bade",
+    "künstler": "Jacopo Tintoretto",
+    "jahr": "1555–1556",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Venezianisches Meisterwerk des Manierismus.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Infanta Margarita Teresa in blauem Kleid",
+    "künstler": "Diego Velázquez",
+    "jahr": "1659",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Porträt der spanischen Infantin, eng verbunden mit dem Wiener Hof.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/3/4/csm__pics_2413_GG_2115x.jpg_591dc4cde8.webp"
+  },
+  {
+    "titel": "Die Auferweckung des Lazarus",
+    "künstler": "Michelangelo Merisi, gen. Caravaggio",
+    "jahr": "um 1599",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Dramatisches Gemälde mit dem für Caravaggio typischen Helldunkel.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Großer Blumenstrauß in einem Holzgefäß",
+    "künstler": "Jan Brueghel d. Ä.",
+    "jahr": "um 1606–1607",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Prachtvolles Blumenstillleben, Meisterwerk der flämischen Barockmalerei.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/8/6/csm_GG_570_CD_web1_f30c8a8b60.webp"
+  },
+  {
+    "titel": "Kreuztragung Christi",
+    "künstler": "Hieronymus Bosch (Nachfolger)",
+    "jahr": "um 1510–1530",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Eindringliche Darstellung der Passion Christi im Stil des Hieronymus Bosch.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/c/f/csm_GG_6429_201601_CD_web1_defbcf74f6.webp"
+  },
+  {
+    "titel": "Vier Apostel",
+    "künstler": "Hans von Aachen",
+    "jahr": "um 1595–1600",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Meisterwerk des Prager Hofmalers Kaiser Rudolfs II.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Bildnis einer jungen Venetianerin",
+    "künstler": "Albrecht Dürer",
+    "jahr": "1505",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Porträt einer unbekannten Frau, entstanden während Dürers zweitem Venedigaufenthalt.",
+    "bild_url": ""
+  },
+  {
+    "titel": "Vanitas-Stillleben",
+    "künstler": "Pieter Claesz",
+    "jahr": "1630",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Holländisches Stillleben mit Symbolen der Vergänglichkeit.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/3/4/csm_GG_5714_202111_benetzt_2_3b510ce71c.webp"
+  },
+  {
+    "titel": "Bildnis eines jungen Mannes",
+    "künstler": "Rembrandt Harmensz van Rijn",
+    "jahr": "um 1634",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Charaktervolles Porträt aus Rembrandts früher Amsterdamer Schaffenszeit.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/a/7/csm_GG_709_2x_fb0b3d0ee5.webp"
+  },
+  {
+    "titel": "Mystische Verlobung des hl. Hermann Joseph mit Maria",
+    "künstler": "Anthonis van Dyck",
+    "jahr": "um 1630",
+    "kategorie": "Gemälde",
+    "sammlung": "Gemäldegalerie",
+    "beschreibung": "Religiöses Andachtsbild des flämischen Barockmalers van Dyck.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/9/6/csm_GG_488_CD_web1_4b4f4cd156.webp"
+  },
+  {
+    "titel": "Feldharnisch Kaiser Karls V.",
+    "künstler": "Kolman Helmschmid",
+    "jahr": "1525",
+    "kategorie": "Harnisch",
+    "sammlung": "Hofjagd- und Rüstkammer",
+    "beschreibung": "Prunkvoller Harnisch, der Kaiser Karl V. auf dem Schlachtfeld begleitete.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/4/c/csm_HJRK_A_2416_202106_02_3ac6aae264.webp"
+  },
+  {
+    "titel": "Grabrelief des Cheti",
+    "künstler": "Unbekannt",
+    "jahr": "um 2400 v. Chr.",
+    "kategorie": "Relief",
+    "sammlung": "Ägyptisch-Orientalische Sammlung",
+    "beschreibung": "Kalksteinrelief aus dem Alten Reich, zeigt den Grabherrn Cheti bei der Speisetafel.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/6/6/csm_AEOS_202_web1_8d3b6faebb.webp"
+  },
+  {
+    "titel": "Österreichischer Erzherzogshut",
+    "künstler": "Wiener Werkstatt",
+    "jahr": "1616",
+    "kategorie": "Insignie",
+    "sammlung": "Kaiserliche Schatzkammer",
+    "beschreibung": "Krönungsinsignie der Habsburger, Symbol der österreichischen Erzherzogtümer.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/8/1/csm_SK_WS_XIV_113_54066_a9d2a26824.webp"
+  },
+  {
+    "titel": "Hammerflügel",
+    "künstler": "Anton Walter",
+    "jahr": "um 1795",
+    "kategorie": "Musikinstrument",
+    "sammlung": "Sammlung alter Musikinstrumente",
+    "beschreibung": "Fortepiano des Wiener Instrumentenbauers Anton Walter, gespielt von W. A. Mozart.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/5/7/csm_SAM_387_5359_9176d2cc78.webp"
+  },
+  {
+    "titel": "Gala-Staatswagen der Fürst-Erzbischöfe von Wien",
+    "künstler": "Wiener Werkstatt",
+    "jahr": "um 1740",
+    "kategorie": "Wagen",
+    "sammlung": "Kaiserliche Wagenburg",
+    "beschreibung": "Prunkvoller Barockwagen, eines der bedeutendsten Stücke der Wagenburg.",
+    "bild_url": "https://www.khm.at/typo3temp/assets/_processed_/6/3/csm_WGBG_DP_9_01_f3e0681172.webp"
+  }
+]
