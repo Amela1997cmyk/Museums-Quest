@@ -12,7 +12,7 @@ Statt überall #3E2C1A zu schreiben, schreiben wir einfach var(--brown).
 Ändert man die Variable einmal, ändert sich die Farbe auf der ganzen Seite.
 
 ## header
-Der <header> ist der dunkle Balken oben mit dem Titel. Die <nav> enthält die drei Tabs. Jeder Button ruft beim Klick die 
+Der header ist der dunkle Balken oben mit dem Titel. Die nav enthält die drei Tabs. Jeder Button ruft beim Klick die 
 JavaScript-Funktion showPanel() auf und übergibt zwei Dinge: 
 den Namen des Bereichs der angezeigt werden soll, und this – also sich selbst, damit er als "aktiv" markiert werden kann.
 
@@ -23,7 +23,7 @@ Die JavaScript-Funktion showPanel() entfernt active von allen und fügt es nur d
 
 ## json Datei laden
 
-Der unsichtbare <input type="file"> wartet auf eine Dateiauswahl
+Der unsichtbare input type="file"> wartet auf eine Dateiauswahl
 Sobald eine Datei gewählt wird, feuert das change-Event
 FileReader liest die Datei als Text
 JSON.parse() wandelt den Text in ein JavaScript-Array um
