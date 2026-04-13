@@ -9,19 +9,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --cream:     #F5F0E8;
-      --parchment: #EDE5D0;
-      --gold:      #B8962E;
-      --gold-light:#D4AF5A;
-      --brown:     #3E2C1A;
-      --brown-mid: #6B4C2A;
-      --text:      #2A1F10;
-      --muted:     #7A6A52;
-      --border:    #C8B98A;
-      --correct:   #2D6A4F;
-      --wrong:     #8B2323;
-    }
+  :root {
+      --purple-main:   #7B2CBF;
+      --purple-dark:   #5A189A;
+      --purple-deep:   #3C096C;
+      --purple-light:  #9D4EDD;
+      --purple-soft:   #E0AAFF;
+
+      --accent-pink:   #C77DFF;
+      --accent-blue:   #4895EF;
+
+      --background:    #F5F3FF;
+      --surface:       #FFFFFF;
+
+      --text:          #2B2B2B;
+      --text-muted:    #6B6B6B;
+
+      --border:        #D8CFFF;
+
+      --correct:       #2D6A4F;
+      --wrong:         #8B2323;
+
+      --cream:         var(--background);
+      --brown:         var(--purple-main);
+      --gold:          var(--accent-pink);
+      --gold-light:    var(--purple-deep);
+      --parchment:     var(--surface);
+      --brown-mid:     var(--purple-dark);
+      --muted:         var(--text-muted);
+}
+    
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
