@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Museum Quest</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap"
+    rel="stylesheet" />
 
   <style>
-  :root {
-      --purple-main:   #7B2CBF;
-      --purple-dark:   #5A189A;
-      --purple-deep:   #3C096C;
-      --purple-light:  #9D4EDD;
-      --purple-soft:   #E0AAFF;
+    :root {
+      --green-main: #385144;
+      --sage-dark: #A2BBA3;
+      --white-deep: #f8f5f2;
+      --green-light: #385144;
+      --green-soft: #385144;
 
-      --accent-pink:   #C77DFF;
-      --accent-blue:   #4895EF;
+      --accent-pink: #C77DFF;
+      --accent-blue: #4895EF;
 
-      --background:    #F5F3FF;
-      --surface:       #FFFFFF;
+      --background: #f8f5f2;
+      --surface: #FFFFFF;
 
-      --text:          #2B2B2B;
-      --text-muted:    #6B6B6B;
+      --text: #2B2B2B;
+      --text-muted: #4A4A4A;
 
-      --border:        #D8CFFF;
+      --border: #2D6A4F;
+      --wrong: #8B2323;
 
-      --correct:       #2D6A4F;
-      --wrong:         #8B2323;
+      --cream: var(--background);
+      --brown: var(--green-main);
+      --gold: var(--accent-pink);
+      --gold-light: var(--green-deep);
+      --parchment: var(--surface);
+      --brown-mid: var(--sage-dark);
+      --muted: var(--text-muted);
+    }
 
-      --cream:         var(--background);
-      --brown:         var(--purple-main);
-      --gold:          var(--accent-pink);
-      --gold-light:    var(--purple-deep);
-      --parchment:     var(--surface);
-      --brown-mid:     var(--purple-dark);
-      --muted:         var(--text-muted);
-}
-    
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background-color: var(--cream);
       background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(184,150,46,0.07) 39px, rgba(184,150,46,0.07) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(184,150,46,0.07) 39px, rgba(184,150,46,0.07) 40px);
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(184, 150, 46, 0.07) 39px, rgba(184, 150, 46, 0.07) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(184, 150, 46, 0.07) 39px, rgba(184, 150, 46, 0.07) 40px);
       color: var(--text);
       font-family: 'EB Garamond', Georgia, serif;
       font-size: 17px;
@@ -62,15 +67,8 @@
       border-bottom: 3px solid var(--gold);
       position: relative;
     }
-    header::after {
-      content: '';
-      display: block;
-      height: 4px;
-      background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 8px, transparent 8px, transparent 14px);
-      position: absolute;
-      bottom: -8px;
-      left: 0; right: 0;
-    }
+
+
     header h1 {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -78,11 +76,12 @@
       letter-spacing: 0.1em;
       color: var(--gold-light);
     }
+
     header p {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-size: 1rem;
-      color: rgba(245,240,232,0.65);
+      color: rgba(245, 240, 232, 0.65);
       margin-top: 0.3rem;
       letter-spacing: 0.05em;
     }
@@ -96,6 +95,7 @@
       border-bottom: 1.5px solid var(--border);
       margin-top: 8px;
     }
+
     nav button {
       background: none;
       border: none;
@@ -108,8 +108,16 @@
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
-    nav button:last-child { border-right: none; }
-    nav button:hover { background: var(--cream); color: var(--brown); }
+
+    nav button:last-child {
+      border-right: none;
+    }
+
+    nav button:hover {
+      background: var(--cream);
+      color: var(--brown);
+    }
+
     nav button.active {
       background: var(--brown);
       color: var(--gold-light);
@@ -124,19 +132,29 @@
     }
 
     /* ── PANEL ── */
-    .panel { display: none; }
-    .panel.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ── ORNAMENT DIVIDER ── */
-    .ornament {
-      text-align: center;
-      color: var(--gold);
-      font-size: 1.2rem;
-      letter-spacing: 0.5em;
-      margin: 1.5rem 0;
-      opacity: 0.6;
+    .panel {
+      display: none;
     }
+
+    .panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+
 
     /* ── CARD ── */
     .card {
@@ -147,6 +165,7 @@
       margin-bottom: 1.25rem;
       box-shadow: 2px 2px 0 var(--parchment);
     }
+
     .card h2 {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.4rem;
@@ -163,6 +182,7 @@
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 1.25rem;
     }
+
     .object-card {
       background: white;
       border: 1px solid var(--border);
@@ -171,21 +191,38 @@
       box-shadow: 2px 2px 0 var(--parchment);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .object-card:hover { transform: translateY(-3px); box-shadow: 4px 5px 0 var(--parchment); }
+
+    .object-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 4px 5px 0 var(--parchment);
+    }
+
     .object-card .img-wrap {
       height: 160px;
       background: var(--parchment);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
-    .object-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    .object-card .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .object-card .img-wrap .placeholder {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 2.5rem;
       color: var(--border);
     }
-    .object-card .info { padding: 0.85rem 1rem; }
+
+    .object-card .info {
+      padding: 0.85rem 1rem;
+    }
+
     .object-card .info h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.05rem;
@@ -193,6 +230,7 @@
       color: var(--brown);
       margin-bottom: 0.2rem;
     }
+
     .object-card .info .meta {
       font-size: 0.85rem;
       color: var(--muted);
@@ -209,10 +247,26 @@
       background: var(--parchment);
       transition: background 0.2s;
     }
-    .upload-area:hover { background: var(--cream); }
-    .upload-area .upload-icon { font-size: 2rem; color: var(--gold); margin-bottom: 0.75rem; }
-    .upload-area p { color: var(--muted); font-style: italic; font-size: 0.95rem; }
-    #file-input { display: none; }
+
+    .upload-area:hover {
+      background: var(--cream);
+    }
+
+    .upload-area .upload-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .upload-area p {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+
+    #file-input {
+      display: none;
+    }
 
     /* ── BUTTONS ── */
     .btn {
@@ -228,13 +282,27 @@
       border-radius: 1px;
       transition: background 0.2s, color 0.2s;
     }
-    .btn:hover { background: var(--brown-mid); }
+
+    .btn:hover {
+      background: var(--brown-mid);
+    }
+
     .btn.outline {
       background: transparent;
       color: var(--brown);
     }
-    .btn.outline:hover { background: var(--parchment); }
-    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 1.25rem; }
+
+    .btn.outline:hover {
+      background: var(--parchment);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.25rem;
+    }
 
     /* ── QUIZ ── */
     .score-bar {
@@ -243,6 +311,7 @@
       align-items: center;
       margin-bottom: 1rem;
     }
+
     .badge {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 0.95rem;
@@ -252,19 +321,25 @@
       background: var(--parchment);
       color: var(--brown-mid);
     }
-    .progress-wrap { margin-bottom: 1.5rem; }
+
+    .progress-wrap {
+      margin-bottom: 1.5rem;
+    }
+
     .progress-track {
       height: 4px;
       background: var(--parchment);
       border: 1px solid var(--border);
       border-radius: 1px;
     }
+
     .progress-fill {
       height: 100%;
       background: var(--gold);
       border-radius: 1px;
       transition: width 0.4s ease;
     }
+
     .question-box {
       background: white;
       border: 1px solid var(--border);
@@ -272,6 +347,7 @@
       padding: 1.75rem 2rem;
       box-shadow: 2px 2px 0 var(--parchment);
     }
+
     .question-text {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.3rem;
@@ -280,7 +356,13 @@
       margin-bottom: 1.25rem;
       line-height: 1.5;
     }
-    .options { display: flex; flex-direction: column; gap: 10px; }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .opt-btn {
       text-align: left;
       padding: 0.75rem 1rem;
@@ -293,10 +375,29 @@
       border-radius: 1px;
       transition: background 0.15s, border-color 0.15s;
     }
-    .opt-btn:hover:not(:disabled) { background: var(--parchment); border-color: var(--gold); }
-    .opt-btn.correct { background: #EAF4EE; border-color: var(--correct); color: var(--correct); font-weight: 500; }
-    .opt-btn.wrong   { background: #FAEAEA; border-color: var(--wrong);   color: var(--wrong);   }
-    .opt-btn:disabled { cursor: default; }
+
+    .opt-btn:hover:not(:disabled) {
+      background: var(--parchment);
+      border-color: var(--gold);
+    }
+
+    .opt-btn.correct {
+      background: #EAF4EE;
+      border-color: var(--correct);
+      color: var(--correct);
+      font-weight: 500;
+    }
+
+    .opt-btn.wrong {
+      background: #FAEAEA;
+      border-color: var(--wrong);
+      color: var(--wrong);
+    }
+
+    .opt-btn:disabled {
+      cursor: default;
+    }
+
     .feedback {
       margin-top: 1rem;
       font-style: italic;
@@ -304,6 +405,7 @@
       color: var(--muted);
       min-height: 1.4rem;
     }
+
     .result-box {
       text-align: center;
       background: white;
@@ -311,12 +413,14 @@
       padding: 2.5rem 2rem;
       box-shadow: 2px 2px 0 var(--parchment);
     }
+
     .result-box h2 {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.5rem;
       color: var(--brown);
       margin-bottom: 0.5rem;
     }
+
     .result-score {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 3.5rem;
@@ -325,11 +429,23 @@
       line-height: 1;
       margin: 0.5rem 0;
     }
-    .result-label { color: var(--muted); font-style: italic; margin-bottom: 1.5rem; }
+
+    .result-label {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
 
     /* ── ÜBER ── */
-    .about-text { line-height: 1.85; color: var(--brown-mid); }
-    .about-text strong { color: var(--brown); font-weight: 600; }
+    .about-text {
+      line-height: 1.85;
+      color: var(--brown-mid);
+    }
+
+    .about-text strong {
+      color: var(--brown);
+      font-weight: 600;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -344,104 +460,123 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 500px) {
-      .card { padding: 1.25rem; }
-      .question-box { padding: 1.25rem; }
-      nav button { padding: 0.75rem 1rem; font-size: 0.9rem; }
+      .card {
+        padding: 1.25rem;
+      }
+
+      .question-box {
+        padding: 1.25rem;
+      }
+
+      nav button {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>&#9670; MuseumQuest &#9670;</h1>
-  <p>Entdecken Sie die Schätze unserer Sammlung</p>
-</header>
+  <header>
+    <h1>MuseumQuest</h1>
+    <p>Entdecken Sie die Schätze unserer Sammlung</p>
+  </header>
 
-<nav>
-  <button class="active" onclick="showPanel('sammlung', this)">Sammlung</button>
-  <button onclick="showPanel('quiz', this)">Quest</button>
-  <button onclick="showPanel('ueber', this)">Über</button>
-</nav>
+  <nav>
+    <button class="active" onclick="showPanel('sammlung', this)">Sammlung</button>
+    <button onclick="showPanel('quiz', this)">Quiz</button>
+    <button onclick="showPanel('ueber', this)">Über</button>
+  </nav>
 
-<main>
+  <main>
 
-  <!-- ══ SAMMLUNG ══ -->
-  <div id="panel-sammlung" class="panel active">
-    <div class="card">
-      <h2>Sammlung laden</h2>
-      <div class="upload-area" onclick="document.getElementById('file-input').click()">
-        <div class="upload-icon">&#128196;</div>
-        <p>sammlung.json hier ablegen oder klicken zum Auswählen</p>
-      </div>
-      <input type="file" id="file-input" accept=".json" />
-      <div class="btn-row">
-        <button class="btn outline" onclick="loadDemo()">Beispielsammlung laden</button>
-      </div>
-    </div>
-    <div class="ornament">&#10070; &#10070; &#10070;</div>
-    <div id="collection-container">
-      <p style="text-align:center; color:var(--muted); font-style:italic;">Noch keine Sammlung geladen.</p>
-    </div>
-  </div>
-
-  <!-- ══ QUIZ ══ -->
-  <div id="panel-quiz" class="panel">
-    <div id="quiz-start">
+    <!-- ══ SAMMLUNG ══ -->
+    <div id="panel-sammlung" class="panel active">
       <div class="card">
-        <h2>Wissen auf die Probe stellen</h2>
-        <p class="about-text">Testen Sie Ihr Wissen über die Objekte der Sammlung. Der Quest generiert automatisch Fragen aus den geladenen Daten.</p>
-        <div class="btn-row">
-          <button class="btn" onclick="startQuiz()">Quest starten</button>
+        <h2>Sammlung laden</h2>
+        <div class="upload-area" onclick="document.getElementById('file-input').click()">
+          <div class="upload-icon">&#128196;</div>
+          <p>sammlung.json hier ablegen oder klicken zum Auswählen</p>
         </div>
-        <p id="quiz-hint" style="text-align:center; margin-top:1rem; font-style:italic; color:var(--muted); font-size:0.9rem;"></p>
-      </div>
-    </div>
-
-    <div id="quiz-running" style="display:none">
-      <div class="score-bar">
-        <span class="badge" id="score-badge">Punkte: 0</span>
-        <span class="badge" id="q-counter">Frage 1 / 8</span>
-      </div>
-      <div class="progress-wrap">
-        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-      </div>
-      <div class="question-box">
-        <div class="question-text" id="question-text"></div>
-        <div class="options" id="options"></div>
-        <div class="feedback" id="feedback"></div>
-      </div>
-      <div class="btn-row">
-        <button class="btn" id="next-btn" style="display:none" onclick="nextQuestion()">Weiter →</button>
-      </div>
-    </div>
-
-    <div id="quiz-result" style="display:none">
-      <div class="result-box">
-        <div class="ornament" style="margin-top:0">&#9670;</div>
-        <h2>Ergebnis</h2>
-        <div class="result-score" id="final-score"></div>
-        <p class="result-label" id="result-label"></p>
+        <input type="file" id="file-input" accept=".json" />
         <div class="btn-row">
-          <button class="btn outline" onclick="restartQuiz()">Nochmal spielen</button>
-          <button class="btn" onclick="showPanel('sammlung', document.querySelector('nav button'))">Zur Sammlung</button>
+          <button class="btn outline" onclick="loadDemo()">Beispielsammlung laden</button>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ══ ÜBER ══ -->
-  <div id="panel-ueber" class="panel">
-    <div class="card">
-      <h2>Über diese App</h2>
-      <p class="about-text">
-        Dieses Museum Quest ist eine <strong>Progressive Web App</strong> – sie kann direkt auf dem Homescreen installiert werden und funktioniert auch offline.<br><br>
-        Laden Sie Ihre eigene <strong>sammlung.json</strong> hoch, um die Objekte Ihrer Sammlung zu durchsuchen und daraus automatisch einen Quest zu generieren.<br><br>
-        Die JSON-Datei sollte Objekte mit den Feldern <strong>titel</strong>, <strong>künstler</strong> und <strong>jahr</strong> enthalten.
-      </p>
+      <div id="collection-container">
+        <p style="text-align:center; color:var(--muted); font-style:italic;">Noch keine Sammlung geladen.</p>
+      </div>
     </div>
-    <div class="card">
-      <h2>Beispiel JSON-Format</h2>
-      <pre style="background:var(--parchment); padding:1rem; font-size:0.85rem; overflow-x:auto; border:1px solid var(--border); line-height:1.6;">[
+
+    <!-- ══ QUIZ ══ -->
+    <div id="panel-quiz" class="panel">
+      <div id="quiz-start">
+        <div class="card">
+          <h2>Wissen auf die Probe stellen</h2>
+          <p class="about-text">Testen Sie Ihr Wissen über die Objekte der Sammlung. Das Quiz generiert automatisch
+            Fragen aus den geladenen Daten.</p>
+          <div class="btn-row">
+            <button class="btn" onclick="startQuiz()">Quest starten</button>
+          </div>
+          <p id="quiz-hint"
+            style="text-align:center; margin-top:1rem; font-style:italic; color:var(--muted); font-size:0.9rem;"></p>
+        </div>
+      </div>
+
+      <div id="quiz-running" style="display:none">
+        <div class="score-bar">
+          <span class="badge" id="score-badge">Punkte: 0</span>
+          <span class="badge" id="q-counter">Frage 1 / 8</span>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="question-box">
+          <div class="question-text" id="question-text"></div>
+          <div class="options" id="options"></div>
+          <div class="feedback" id="feedback"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="next-btn" style="display:none" onclick="nextQuestion()">Weiter →</button>
+        </div>
+      </div>
+
+      <div id="quiz-result" style="display:none">
+        <div class="result-box">
+          <div class="ornament" style="margin-top:0">&#9670;</div>
+          <h2>Ergebnis</h2>
+          <div class="result-score" id="final-score"></div>
+          <p class="result-label" id="result-label"></p>
+          <div class="btn-row">
+            <button class="btn outline" onclick="restartQuiz()">Nochmal spielen</button>
+            <button class="btn" onclick="showPanel('sammlung', document.querySelector('nav button'))">Zur
+              Sammlung</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ÜBER ══ -->
+    <div id="panel-ueber" class="panel">
+      <div class="card">
+        <h2>Über diese App</h2>
+        <p class="about-text">
+          Dieses Museum Quest ist eine <strong>Progressive Web App</strong> – sie kann direkt auf dem Homescreen
+          installiert werden und funktioniert auch offline.<br><br>
+          Laden Sie Ihre eigene <strong>sammlung.json</strong> hoch, um die Objekte Ihrer Sammlung zu durchsuchen und
+          daraus automatisch einen Quiz zu generieren.<br><br>
+          Die JSON-Datei sollte Objekte mit den Feldern <strong>titel</strong>, <strong>künstler</strong> und
+          <strong>jahr</strong> enthalten.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Beispiel JSON-Format</h2>
+        <pre
+          style="background:var(--parchment); padding:1rem; font-size:0.85rem; overflow-x:auto; border:1px solid var(--border); line-height:1.6;">[
   {
     "titel": "Die Sternennacht",
     "künstler": "Vincent van Gogh",
@@ -449,197 +584,198 @@
     "bild_url": "https://..."
   }
 ]</pre>
+      </div>
     </div>
-  </div>
 
-</main>
+  </main>
 
-<footer>
-  &copy; Museum Quest &nbsp;·&nbsp; Eine Progressive Web App
-</footer>
+  <footer>
+    &copy; Museum Quest &nbsp;·&nbsp; Eine Progressive Web App
+  </footer>
 
-<script>
-  /* ── DATEN ── */
-  const DEMO = [
-    { titel:"Mona Lisa", künstler:"Leonardo da Vinci", jahr:"1503", kategorie:"Ölgemälde" },
-    { titel:"Die Sternennacht", künstler:"Vincent van Gogh", jahr:"1889", kategorie:"Ölgemälde" },
-    { titel:"Das Mädchen mit dem Perlenohrring", künstler:"Johannes Vermeer", jahr:"1665", kategorie:"Ölgemälde" },
-    { titel:"Der Schrei", künstler:"Edvard Munch", jahr:"1893", kategorie:"Tempera" },
-    { titel:"Guernica", künstler:"Pablo Picasso", jahr:"1937", kategorie:"Ölgemälde" },
-    { titel:"Die Erschaffung Adams", künstler:"Michelangelo", jahr:"1512", kategorie:"Fresko" },
-    { titel:"Das Abendmahl", künstler:"Leonardo da Vinci", jahr:"1498", kategorie:"Fresko" },
-    { titel:"Impression, Sonnenaufgang", künstler:"Claude Monet", jahr:"1872", kategorie:"Ölgemälde" }
-  ];
+  <script>
+    /* ── DATEN ── */
+    const DEMO = [
+      { titel: "Mona Lisa", künstler: "Leonardo da Vinci", jahr: "1503", kategorie: "Ölgemälde" },
+      { titel: "Die Sternennacht", künstler: "Vincent van Gogh", jahr: "1889", kategorie: "Ölgemälde" },
+      { titel: "Das Mädchen mit dem Perlenohrring", künstler: "Johannes Vermeer", jahr: "1665", kategorie: "Ölgemälde" },
+      { titel: "Der Schrei", künstler: "Edvard Munch", jahr: "1893", kategorie: "Tempera" },
+      { titel: "Guernica", künstler: "Pablo Picasso", jahr: "1937", kategorie: "Ölgemälde" },
+      { titel: "Die Erschaffung Adams", künstler: "Michelangelo", jahr: "1512", kategorie: "Fresko" },
+      { titel: "Das Abendmahl", künstler: "Leonardo da Vinci", jahr: "1498", kategorie: "Fresko" },
+      { titel: "Impression, Sonnenaufgang", künstler: "Claude Monet", jahr: "1872", kategorie: "Ölgemälde" }
+    ];
 
-  let collection = [];
-  let questions  = [];
-  let current    = 0;
-  let score      = 0;
-  let answered   = false;
+    let collection = [];
+    let questions = [];
+    let current = 0;
+    let score = 0;
+    let answered = false;
 
-  /* ── NAVIGATION ── */
-  function showPanel(id, btn) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-    document.getElementById('panel-' + id).classList.add('active');
-    if (btn) btn.classList.add('active');
-  }
-
-  /* ── DATEI LADEN ── */
-  document.getElementById('file-input').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      try {
-        const data = JSON.parse(ev.target.result);
-        collection = data;
-        renderCollection();
-      } catch { alert('Ungültige JSON-Datei.'); }
-    };
-    reader.readAsText(file);
-  });
-
-  function loadDemo() {
-    collection = DEMO;
-    renderCollection();
-  }
-
-  /* ── SAMMLUNG ANZEIGEN ── */
-  function renderCollection() {
-    const container = document.getElementById('collection-container');
-    if (!collection.length) {
-      container.innerHTML = '<p style="text-align:center;color:var(--muted);font-style:italic;">Keine Objekte gefunden.</p>';
-      return;
+    /* ── NAVIGATION ── */
+    function showPanel(id, btn) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + id).classList.add('active');
+      if (btn) btn.classList.add('active');
     }
-    let html = `<div class="collection-grid">`;
-    collection.forEach(obj => {
-      const titel    = obj.titel    || obj.title    || '—';
-      const künstler = obj.künstler || obj.artist   || '';
-      const jahr     = obj.jahr     || obj.year     || '';
-      const bild     = obj.bild_url || obj.image    || '';
-      const meta     = [künstler, jahr].filter(Boolean).join(', ');
-      html += `
+
+    /* ── DATEI LADEN ── */
+    document.getElementById('file-input').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          collection = data;
+          renderCollection();
+        } catch { alert('Ungültige JSON-Datei.'); }
+      };
+      reader.readAsText(file);
+    });
+
+    function loadDemo() {
+      collection = DEMO;
+      renderCollection();
+    }
+
+    /* ── SAMMLUNG ANZEIGEN ── */
+    function renderCollection() {
+      const container = document.getElementById('collection-container');
+      if (!collection.length) {
+        container.innerHTML = '<p style="text-align:center;color:var(--muted);font-style:italic;">Keine Objekte gefunden.</p>';
+        return;
+      }
+      let html = `<div class="collection-grid">`;
+      collection.forEach(obj => {
+        const titel = obj.titel || obj.title || '—';
+        const künstler = obj.künstler || obj.artist || '';
+        const jahr = obj.jahr || obj.year || '';
+        const bild = obj.bild_url || obj.image || '';
+        const meta = [künstler, jahr].filter(Boolean).join(', ');
+        html += `
         <div class="object-card">
           <div class="img-wrap">
             ${bild
-              ? `<img src="${bild}" alt="${titel}" loading="lazy" />`
-              : `<span class="placeholder">&#9670;</span>`}
+            ? `<img src="${bild}" alt="${titel}" loading="lazy" />`
+            : `<span class="placeholder">&#9670;</span>`}
           </div>
           <div class="info">
             <h3>${titel}</h3>
             <p class="meta">${meta}</p>
           </div>
         </div>`;
-    });
-    html += `</div>`;
-    container.innerHTML = html;
-  }
-
-  /* ── QUIZ GENERIEREN ── */
-  function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
-
-  function buildQuestions(data) {
-    const qs = [];
-    data.forEach(obj => {
-      const titel    = obj.titel    || obj.title  || '';
-      const künstler = obj.künstler || obj.artist || '';
-      const jahr     = obj.jahr     || obj.year   || '';
-      const others   = data.filter(d => d !== obj);
-
-      if (künstler && others.length >= 3) {
-        const wrong = shuffle(others.map(d => d.künstler || d.artist).filter(Boolean).filter(a => a !== künstler)).slice(0, 3);
-        if (wrong.length === 3) qs.push({ q: `Wer schuf „${titel}"?`, correct: künstler, options: shuffle([künstler, ...wrong]) });
-      }
-      if (jahr && others.length >= 3) {
-        const wrong = shuffle(others.map(d => d.jahr || d.year).filter(Boolean).filter(y => y !== jahr)).slice(0, 3);
-        if (wrong.length === 3) qs.push({ q: `In welchem Jahr entstand „${titel}"?`, correct: jahr, options: shuffle([jahr, ...wrong]) });
-      }
-      if (titel && künstler && others.length >= 3) {
-        const wrong = shuffle(others.map(d => d.titel || d.title).filter(Boolean).filter(t => t !== titel)).slice(0, 3);
-        if (wrong.length === 3) qs.push({ q: `Welches Werk stammt von ${künstler}?`, correct: titel, options: shuffle([titel, ...wrong]) });
-      }
-    });
-    return shuffle(qs).slice(0, 10);
-  }
-
-  function startQuiz() {
-    const data = collection.length ? collection : DEMO;
-    questions = buildQuestions(data);
-    if (questions.length < 3) {
-      document.getElementById('quiz-hint').textContent = 'Bitte laden Sie zuerst eine Sammlung mit mindestens 4 Objekten.';
-      return;
+      });
+      html += `</div>`;
+      container.innerHTML = html;
     }
-    current = 0; score = 0;
-    document.getElementById('quiz-start').style.display   = 'none';
-    document.getElementById('quiz-result').style.display  = 'none';
-    document.getElementById('quiz-running').style.display = 'block';
-    showQuestion();
-  }
 
-  function showQuestion() {
-    if (current >= questions.length) { showResult(); return; }
-    answered = false;
-    const q = questions[current];
-    document.getElementById('question-text').textContent = q.q;
-    document.getElementById('q-counter').textContent     = `Frage ${current + 1} / ${questions.length}`;
-    document.getElementById('score-badge').textContent   = `Punkte: ${score}`;
-    document.getElementById('progress-fill').style.width = `${(current / questions.length) * 100}%`;
-    document.getElementById('feedback').textContent      = '';
-    document.getElementById('next-btn').style.display    = 'none';
+    /* ── QUIZ GENERIEREN ── */
+    function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
 
-    const optDiv = document.getElementById('options');
-    optDiv.innerHTML = '';
-    q.options.forEach(opt => {
-      const btn = document.createElement('button');
-      btn.className = 'opt-btn';
-      btn.textContent = opt;
-      btn.onclick = () => answer(opt, btn, q.correct);
-      optDiv.appendChild(btn);
-    });
-  }
+    function buildQuestions(data) {
+      const qs = [];
+      data.forEach(obj => {
+        const titel = obj.titel || obj.title || '';
+        const künstler = obj.künstler || obj.artist || '';
+        const jahr = obj.jahr || obj.year || '';
+        const others = data.filter(d => d !== obj);
 
-  function answer(chosen, btn, correct) {
-    if (answered) return;
-    answered = true;
-    document.querySelectorAll('.opt-btn').forEach(b => {
-      b.disabled = true;
-      if (b.textContent === correct) b.classList.add('correct');
-    });
-    if (chosen === correct) {
-      score++;
-      document.getElementById('feedback').textContent = '✓ Richtig!';
-    } else {
-      btn.classList.add('wrong');
-      document.getElementById('feedback').textContent = `Leider falsch. Richtige Antwort: ${correct}`;
+        if (künstler && others.length >= 3) {
+          const wrong = shuffle(others.map(d => d.künstler || d.artist).filter(Boolean).filter(a => a !== künstler)).slice(0, 3);
+          if (wrong.length === 3) qs.push({ q: `Wer schuf „${titel}"?`, correct: künstler, options: shuffle([künstler, ...wrong]) });
+        }
+        if (jahr && others.length >= 3) {
+          const wrong = shuffle(others.map(d => d.jahr || d.year).filter(Boolean).filter(y => y !== jahr)).slice(0, 3);
+          if (wrong.length === 3) qs.push({ q: `In welchem Jahr entstand „${titel}"?`, correct: jahr, options: shuffle([jahr, ...wrong]) });
+        }
+        if (titel && künstler && others.length >= 3) {
+          const wrong = shuffle(others.map(d => d.titel || d.title).filter(Boolean).filter(t => t !== titel)).slice(0, 3);
+          if (wrong.length === 3) qs.push({ q: `Welches Werk stammt von ${künstler}?`, correct: titel, options: shuffle([titel, ...wrong]) });
+        }
+      });
+      return shuffle(qs).slice(0, 10);
     }
-    document.getElementById('next-btn').style.display = 'inline-block';
-  }
 
-  function nextQuestion() { current++; showQuestion(); }
+    function startQuiz() {
+      const data = collection.length ? collection : DEMO;
+      questions = buildQuestions(data);
+      if (questions.length < 3) {
+        document.getElementById('quiz-hint').textContent = 'Bitte laden Sie zuerst eine Sammlung mit mindestens 4 Objekten.';
+        return;
+      }
+      current = 0; score = 0;
+      document.getElementById('quiz-start').style.display = 'none';
+      document.getElementById('quiz-result').style.display = 'none';
+      document.getElementById('quiz-running').style.display = 'block';
+      showQuestion();
+    }
 
-  function showResult() {
-    document.getElementById('quiz-running').style.display = 'none';
-    document.getElementById('quiz-result').style.display  = 'block';
-    const pct = Math.round((score / questions.length) * 100);
-    document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
-    const labels = pct === 100 ? 'Außergewöhnlich – ein wahrer Kenner!'
-                 : pct >= 75  ? 'Sehr gut – beeindruckende Kenntnisse.'
-                 : pct >= 50  ? 'Solide – mit etwas Übung noch besser.'
-                 :              'Weiter studieren – die Sammlung wartet.';
-    document.getElementById('result-label').textContent = labels;
-  }
+    function showQuestion() {
+      if (current >= questions.length) { showResult(); return; }
+      answered = false;
+      const q = questions[current];
+      document.getElementById('question-text').textContent = q.q;
+      document.getElementById('q-counter').textContent = `Frage ${current + 1} / ${questions.length}`;
+      document.getElementById('score-badge').textContent = `Punkte: ${score}`;
+      document.getElementById('progress-fill').style.width = `${(current / questions.length) * 100}%`;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('next-btn').style.display = 'none';
 
-  function restartQuiz() {
-    document.getElementById('quiz-result').style.display  = 'none';
-    document.getElementById('quiz-start').style.display   = 'block';
-  }
+      const optDiv = document.getElementById('options');
+      optDiv.innerHTML = '';
+      q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'opt-btn';
+        btn.textContent = opt;
+        btn.onclick = () => answer(opt, btn, q.correct);
+        optDiv.appendChild(btn);
+      });
+    }
 
-  /* ── SERVICE WORKER ── */
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
-  }
-</script>
+    function answer(chosen, btn, correct) {
+      if (answered) return;
+      answered = true;
+      document.querySelectorAll('.opt-btn').forEach(b => {
+        b.disabled = true;
+        if (b.textContent === correct) b.classList.add('correct');
+      });
+      if (chosen === correct) {
+        score++;
+        document.getElementById('feedback').textContent = '✓ Richtig!';
+      } else {
+        btn.classList.add('wrong');
+        document.getElementById('feedback').textContent = `Leider falsch. Richtige Antwort: ${correct}`;
+      }
+      document.getElementById('next-btn').style.display = 'inline-block';
+    }
+
+    function nextQuestion() { current++; showQuestion(); }
+
+    function showResult() {
+      document.getElementById('quiz-running').style.display = 'none';
+      document.getElementById('quiz-result').style.display = 'block';
+      const pct = Math.round((score / questions.length) * 100);
+      document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+      const labels = pct === 100 ? 'Außergewöhnlich – ein wahrer Kenner!'
+        : pct >= 75 ? 'Sehr gut – beeindruckende Kenntnisse.'
+          : pct >= 50 ? 'Solide – mit etwas Übung noch besser.'
+            : 'Weiter studieren – die Sammlung wartet.';
+      document.getElementById('result-label').textContent = labels;
+    }
+
+    function restartQuiz() {
+      document.getElementById('quiz-result').style.display = 'none';
+      document.getElementById('quiz-start').style.display = 'block';
+    }
+
+    /* ── SERVICE WORKER ── */
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
 
 </body>
+
 </html>
