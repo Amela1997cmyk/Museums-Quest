@@ -4,42 +4,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Museum Quest</title>
+  <title>Das GrazQuiz</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icon.png" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --green-main: #385144;
-      --sage-dark: #A2BBA3;
-      --white-deep: #f8f5f2;
-      --green-light: #385144;
-      --green-soft: #385144;
-
-      --accent-pink: #C77DFF;
-      --accent-blue: #4895EF;
-
-      --background: #f8f5f2;
-      --surface: #FFFFFF;
-
-      --text: #2B2B2B;
-      --text-muted: #4A4A4A;
-
-      --border: #2D6A4F;
-      --wrong: #8B2323;
-
-      --cream: var(--background);
-      --brown: var(--green-main);
-      --gold: var(--accent-pink);
-      --gold-light: var(--green-deep);
-      --parchment: var(--surface);
-      --brown-mid: var(--sage-dark);
-      --muted: var(--text-muted);
+      --black: #cbc9bd;
+      --dark: #b8b5a8;
+      --dark-card: #a99c92;
+      --dark-mid: #9b908a;
+      --border: #8b8078;
+      --border-lt: #7a6f66;
+      --white: #1a1815;
+      --off-white: #2a251f;
+      --muted: #4a453f;
+      --accent: #56008f;
+      --accent-lt: #7a20b8;
+      --accent2: #548805;
+      --accent3: #026897;
+      --correct: #548805;
+      --correct-bg: #f0f8e8;
+      --wrong: #8f1a00;
+      --wrong-bg: #f8f0e8;
     }
-
 
     * {
       box-sizing: border-box;
@@ -48,103 +37,161 @@
     }
 
     body {
-      background-color: var(--cream);
-      background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(184, 150, 46, 0.07) 39px, rgba(184, 150, 46, 0.07) 40px),
-        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(184, 150, 46, 0.07) 39px, rgba(184, 150, 46, 0.07) 40px);
-      color: var(--text);
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: 17px;
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
       min-height: 100vh;
+      line-height: 1.6;
     }
 
     /* ── HEADER ── */
     header {
-      background: var(--brown);
-      color: var(--cream);
-      text-align: center;
-      padding: 2rem 1rem 1.5rem;
-      border-bottom: 3px solid var(--gold);
-      position: relative;
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-
-    header h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
+    .logo-title {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
       font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--gold-light);
+      color: var(--white);
+      letter-spacing: -0.01em;
     }
 
-    header p {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: rgba(245, 240, 232, 0.65);
-      margin-top: 0.3rem;
-      letter-spacing: 0.05em;
+    .logo-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .header-badge {
+      font-size: 0.68rem;
+      color: var(--off-white);
+      border: 1px solid var(--accent3);
+      background: var(--accent3);
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── COLOR STRIPE ── */
+    .color-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, #56008f 33%, #548805 33% 66%, #026897 66%);
+    }
+
+    .hero {
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      height: 170px;
+    }
+
+    .hero-images {
+      display: flex;
+      height: 100%;
+      gap: 2px;
+    }
+
+    .hero-images div {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .hero-images div:hover {
+      opacity: 0.75;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgba(10, 10, 10, 0.25), rgba(10, 10, 10, 0.6));
+    }
+
+    .hero-overlay h2 {
+      font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .hero-overlay h2 span {
+      color: var(--accent);
+      font-weight: 600;
     }
 
     /* ── NAV ── */
     nav {
       display: flex;
-      justify-content: center;
-      gap: 0;
-      background: var(--parchment);
-      border-bottom: 1.5px solid var(--border);
-      margin-top: 8px;
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
     }
 
     nav button {
       background: none;
       border: none;
-      border-right: 1px solid var(--border);
-      padding: 0.75rem 2rem;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      color: var(--brown-mid);
+      border-bottom: 2px solid transparent;
+      padding: 0.85rem 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    nav button:last-child {
-      border-right: none;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
     }
 
     nav button:hover {
-      background: var(--cream);
-      color: var(--brown);
+      color: var(--off-white);
     }
 
     nav button.active {
-      background: var(--brown);
-      color: var(--gold-light);
-      font-weight: 600;
+      color: var(--accent);
+      border-bottom-color: var(--accent);
     }
 
-    /* ── MAIN CONTAINER ── */
+    /* ── MAIN ── */
     main {
-      max-width: 780px;
-      margin: 2.5rem auto;
-      padding: 0 1rem 3rem;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
     }
 
-    /* ── PANEL ── */
     .panel {
       display: none;
     }
 
     .panel.active {
       display: block;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(6px);
       }
 
       to {
@@ -153,147 +200,109 @@
       }
     }
 
-
-
-
-    /* ── CARD ── */
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 1.5rem 2rem;
-      margin-bottom: 1.25rem;
-      box-shadow: 2px 2px 0 var(--parchment);
-    }
-
-    .card h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.4rem;
+    .section-title {
+      font-size: 0.68rem;
       font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── SAMMLUNG ── */
-    .collection-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .object-card {
-      background: white;
+    /* ── CARD ── */
+    .card {
+      background: var(--dark-card);
       border: 1px solid var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-      box-shadow: 2px 2px 0 var(--parchment);
-      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .object-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 4px 5px 0 var(--parchment);
-    }
-
-    .object-card .img-wrap {
-      height: 160px;
-      background: var(--parchment);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .object-card .img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .object-card .img-wrap .placeholder {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.5rem;
-      color: var(--border);
-    }
-
-    .object-card .info {
-      padding: 0.85rem 1rem;
-    }
-
-    .object-card .info h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.05rem;
+    .card h3 {
+      font-size: 1rem;
       font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 0.2rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
     }
 
-    .object-card .info .meta {
-      font-size: 0.85rem;
+    .card p {
       color: var(--muted);
-      font-style: italic;
+      font-size: 0.88rem;
+      line-height: 1.75;
     }
 
-    /* ── UPLOAD AREA ── */
-    .upload-area {
-      border: 2px dashed var(--border);
-      border-radius: 2px;
-      padding: 2.5rem;
-      text-align: center;
+    /* ── EPOCH GRID ── */
+    .epoch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .epoch-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 0.75rem;
       cursor: pointer;
-      background: var(--parchment);
-      transition: background 0.2s;
+      transition: border-color 0.2s, background 0.2s;
+      text-align: center;
     }
 
-    .upload-area:hover {
-      background: var(--cream);
+    .epoch-card:hover {
+      border-color: var(--accent);
+      background: var(--dark-mid);
     }
 
-    .upload-area .upload-icon {
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
+    .epoch-card.selected {
+      border-color: var(--accent);
+      background: var(--dark-mid);
     }
 
-    .upload-area p {
+    .ep-years {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-lt);
+      margin-bottom: 3px;
+    }
+
+    .ep-label {
+      font-size: 0.68rem;
       color: var(--muted);
-      font-style: italic;
-      font-size: 0.95rem;
-    }
-
-    #file-input {
-      display: none;
+      letter-spacing: 0.05em;
     }
 
     /* ── BUTTONS ── */
     .btn {
       display: inline-block;
-      padding: 0.6rem 1.5rem;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1rem;
-      letter-spacing: 0.06em;
-      border: 1.5px solid var(--brown);
-      background: var(--brown);
-      color: var(--cream);
+      padding: 0.65rem 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: var(--black);
       cursor: pointer;
-      border-radius: 1px;
-      transition: background 0.2s, color 0.2s;
+      border-radius: 3px;
+      transition: background 0.2s, border-color 0.2s;
     }
 
     .btn:hover {
-      background: var(--brown-mid);
+      background: var(--accent-lt);
+      border-color: var(--accent-lt);
     }
 
     .btn.outline {
       background: transparent;
-      color: var(--brown);
+      color: var(--accent);
     }
 
     .btn.outline:hover {
-      background: var(--parchment);
+      background: rgba(200, 168, 75, 0.1);
     }
 
     .btn-row {
@@ -301,7 +310,7 @@
       gap: 0.75rem;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
     }
 
     /* ── QUIZ ── */
@@ -313,85 +322,89 @@
     }
 
     .badge {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.05em;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       padding: 3px 12px;
-      border: 1px solid var(--border);
-      background: var(--parchment);
-      color: var(--brown-mid);
-    }
-
-    .progress-wrap {
-      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-lt);
+      border-radius: 20px;
+      color: var(--muted);
+      background: var(--dark-card);
     }
 
     .progress-track {
-      height: 4px;
-      background: var(--parchment);
-      border: 1px solid var(--border);
+      height: 2px;
+      background: var(--border);
       border-radius: 1px;
+      margin-bottom: 1.5rem;
     }
 
     .progress-fill {
       height: 100%;
-      background: var(--gold);
+      background: var(--accent);
       border-radius: 1px;
       transition: width 0.4s ease;
     }
 
     .question-box {
-      background: white;
+      background: var(--dark-card);
       border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 1.75rem 2rem;
-      box-shadow: 2px 2px 0 var(--parchment);
+      border-radius: 4px;
+      padding: 1.75rem;
+    }
+
+    .q-epoch-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
     }
 
     .question-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1.4rem;
       line-height: 1.5;
     }
 
     .options {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .opt-btn {
       text-align: left;
-      padding: 0.75rem 1rem;
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: 1rem;
-      border: 1px solid var(--border);
-      background: var(--cream);
-      color: var(--text);
+      padding: 0.8rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      border: 1px solid var(--border-lt);
+      background: var(--dark-mid);
+      color: var(--off-white);
       cursor: pointer;
-      border-radius: 1px;
-      transition: background 0.15s, border-color 0.15s;
+      border-radius: 3px;
+      transition: border-color 0.15s, background 0.15s;
     }
 
     .opt-btn:hover:not(:disabled) {
-      background: var(--parchment);
-      border-color: var(--gold);
+      border-color: var(--accent);
+      background: rgba(200, 168, 75, 0.07);
     }
 
     .opt-btn.correct {
-      background: #EAF4EE;
+      background: var(--correct-bg);
       border-color: var(--correct);
-      color: var(--correct);
-      font-weight: 500;
+      color: #6fcf97;
     }
 
     .opt-btn.wrong {
-      background: #FAEAEA;
+      background: var(--wrong-bg);
       border-color: var(--wrong);
-      color: var(--wrong);
+      color: #eb5757;
     }
 
     .opt-btn:disabled {
@@ -400,68 +413,111 @@
 
     .feedback {
       margin-top: 1rem;
-      font-style: italic;
-      font-size: 0.95rem;
+      font-size: 0.83rem;
       color: var(--muted);
-      min-height: 1.4rem;
+      min-height: 1.3rem;
+      font-style: italic;
     }
 
+    .fact-box {
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--dark-mid);
+      border-left: 2px solid var(--accent);
+      border-radius: 2px;
+      font-size: 0.83rem;
+      color: var(--muted);
+      display: none;
+    }
+
+    .fact-box.show {
+      display: block;
+    }
+
+    /* ── RESULT ── */
     .result-box {
       text-align: center;
-      background: white;
+      background: var(--dark-card);
       border: 1px solid var(--border);
-      padding: 2.5rem 2rem;
-      box-shadow: 2px 2px 0 var(--parchment);
-    }
-
-    .result-box h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.5rem;
-      color: var(--brown);
-      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      padding: 3rem 2rem;
     }
 
     .result-score {
-      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 3.5rem;
       font-weight: 600;
-      color: var(--gold);
+      color: var(--accent);
       line-height: 1;
       margin: 0.5rem 0;
     }
 
+    .result-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
     .result-label {
       color: var(--muted);
-      font-style: italic;
-      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      margin-bottom: 0.5rem;
     }
 
-    /* ── ÜBER ── */
-    .about-text {
-      line-height: 1.85;
-      color: var(--brown-mid);
+    /* ── EPOCHEN INFO ── */
+    .epoch-list {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    .about-text strong {
-      color: var(--brown);
-      font-weight: 600;
+    .epoch-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--dark-mid);
+      border-radius: 3px;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .epoch-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
     }
 
     /* ── FOOTER ── */
     footer {
       text-align: center;
       padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
+      font-size: 0.73rem;
+      color: var(--border-lt);
       border-top: 1px solid var(--border);
-      font-style: italic;
       letter-spacing: 0.05em;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 500px) {
-      .card {
-        padding: 1.25rem;
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        height: 110px;
       }
 
       .question-box {
@@ -470,7 +526,6 @@
 
       nav button {
         padding: 0.75rem 1rem;
-        font-size: 0.9rem;
       }
     }
   </style>
@@ -479,66 +534,92 @@
 <body>
 
   <header>
-    <h1>MuseumQuest</h1>
-    <p>Entdecken Sie die Schätze unserer Sammlung</p>
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <img src="icon.png" alt="Das GrazQuiz" style="height:52px; width:auto;" />
+      <div>
+        <div class="logo-title">Das GrazQuiz</div>
+        <div class="logo-sub">Museum Quiz</div>
+      </div>
+    </div>
+    <div class="header-badge">GrazMuseum</div>
   </header>
 
+  <div class="color-stripe"></div>
+
+  <div class="hero">
+    <div class="hero-images">
+      <div style="background-image:url('https://360.grazmuseum.at/site/assets/files/1/01-rathaus-1.1800x0.jpg')"></div>
+      <div style="background-image:url('https://360.grazmuseum.at/site/assets/files/1/02-familierochel.1800x0.jpg')">
+      </div>
+      <div style="background-image:url('https://360.grazmuseum.at/site/assets/files/1/04-kirschenrummel.1800x0.jpg')">
+      </div>
+      <div style="background-image:url('https://360.grazmuseum.at/site/assets/files/1/05-stadtpark.1800x0.jpg')"></div>
+      <div style="background-image:url('https://360.grazmuseum.at/site/assets/files/1/07-trost.1800x0.jpg')"></div>
+    </div>
+    <div class="hero-overlay">
+      <h2>Graz <span>1128</span> — <span>2003</span></h2>
+    </div>
+  </div>
+
   <nav>
-    <button class="active" onclick="showPanel('sammlung', this)">Sammlung</button>
-    <button onclick="showPanel('quiz', this)">Quiz</button>
+    <button class="active" onclick="showPanel('quiz', this)">Quiz</button>
+    <button onclick="showPanel('epochen', this)">Epochen</button>
     <button onclick="showPanel('ueber', this)">Über</button>
   </nav>
 
   <main>
 
-    <!-- ══ SAMMLUNG ══ -->
-    <div id="panel-sammlung" class="panel active">
-      <div class="card">
-        <h2>Sammlung laden</h2>
-        <div class="upload-area" onclick="document.getElementById('file-input').click()">
-          <div class="upload-icon">&#128196;</div>
-          <p>sammlung.json hier ablegen oder klicken zum Auswählen</p>
-        </div>
-        <input type="file" id="file-input" accept=".json" />
-        <div class="btn-row">
-          <button class="btn outline" onclick="loadDemo()">Beispielsammlung laden</button>
-        </div>
-      </div>
-
-      <div id="collection-container">
-        <p style="text-align:center; color:var(--muted); font-style:italic;">Noch keine Sammlung geladen.</p>
-      </div>
-    </div>
-
     <!-- ══ QUIZ ══ -->
-    <div id="panel-quiz" class="panel">
+    <div id="panel-quiz" class="panel active">
+
       <div id="quiz-start">
-        <div class="card">
-          <h2>Wissen auf die Probe stellen</h2>
-          <p class="about-text">Testen Sie Ihr Wissen über die Objekte der Sammlung. Das Quiz generiert automatisch
-            Fragen aus den geladenen Daten.</p>
-          <div class="btn-row">
-            <button class="btn" onclick="startQuiz()">Quest starten</button>
+        <div class="section-title">Epoche wählen</div>
+        <div class="epoch-grid" id="epoch-selector">
+          <div class="epoch-card selected" data-epoch="alle" onclick="selectEpoch(this)">
+            <div class="ep-years">Alle</div>
+            <div class="ep-label">1128–2003</div>
           </div>
-          <p id="quiz-hint"
-            style="text-align:center; margin-top:1rem; font-style:italic; color:var(--muted); font-size:0.9rem;"></p>
+          <div class="epoch-card" data-epoch="0" onclick="selectEpoch(this)">
+            <div class="ep-years">1128</div>
+            <div class="ep-label">bis 1600</div>
+          </div>
+          <div class="epoch-card" data-epoch="1" onclick="selectEpoch(this)">
+            <div class="ep-years">1600</div>
+            <div class="ep-label">bis 1809</div>
+          </div>
+          <div class="epoch-card" data-epoch="2" onclick="selectEpoch(this)">
+            <div class="ep-years">1809</div>
+            <div class="ep-label">bis 1914</div>
+          </div>
+          <div class="epoch-card" data-epoch="3" onclick="selectEpoch(this)">
+            <div class="ep-years">1914</div>
+            <div class="ep-label">bis 1945</div>
+          </div>
+          <div class="epoch-card" data-epoch="4" onclick="selectEpoch(this)">
+            <div class="ep-years">1945</div>
+            <div class="ep-label">bis 2003</div>
+          </div>
         </div>
+        <div class="btn-row" style="justify-content:flex-start;margin-top:0">
+          <button class="btn" onclick="startQuiz()">Quiz starten</button>
+        </div>
+        <p id="quiz-hint" style="margin-top:0.75rem;font-size:0.8rem;color:#eb5757;"></p>
       </div>
 
       <div id="quiz-running" style="display:none">
         <div class="score-bar">
           <span class="badge" id="score-badge">Punkte: 0</span>
-          <span class="badge" id="q-counter">Frage 1 / 8</span>
+          <span class="badge" id="q-counter">1 / 10</span>
         </div>
-        <div class="progress-wrap">
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-          </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill" style="width:0%"></div>
         </div>
         <div class="question-box">
+          <div class="q-epoch-tag" id="q-epoch-tag"></div>
           <div class="question-text" id="question-text"></div>
           <div class="options" id="options"></div>
           <div class="feedback" id="feedback"></div>
+          <div class="fact-box" id="fact-box"></div>
         </div>
         <div class="btn-row">
           <button class="btn" id="next-btn" style="display:none" onclick="nextQuestion()">Weiter →</button>
@@ -547,72 +628,157 @@
 
       <div id="quiz-result" style="display:none">
         <div class="result-box">
-          <div class="ornament" style="margin-top:0">&#9670;</div>
-          <h2>Ergebnis</h2>
+          <div class="section-title" style="text-align:center;border:none;margin-bottom:0.5rem">Ergebnis</div>
           <div class="result-score" id="final-score"></div>
+          <div class="result-title" id="result-title"></div>
           <p class="result-label" id="result-label"></p>
           <div class="btn-row">
             <button class="btn outline" onclick="restartQuiz()">Nochmal spielen</button>
-            <button class="btn" onclick="showPanel('sammlung', document.querySelector('nav button'))">Zur
-              Sammlung</button>
+            <button class="btn" onclick="showPanel('epochen', document.querySelectorAll('nav button')[1])">Epochen
+              erkunden</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ══ ÜBER ══ -->
-    <div id="panel-ueber" class="panel">
+    <!-- ══ EPOCHEN ══ -->
+    <div id="panel-epochen" class="panel">
+      <div class="section-title">Die fünf Epochen</div>
       <div class="card">
-        <h2>Über diese App</h2>
-        <p class="about-text">
-          Dieses Museum Quest ist eine <strong>Progressive Web App</strong> – sie kann direkt auf dem Homescreen
-          installiert werden und funktioniert auch offline.<br><br>
-          Laden Sie Ihre eigene <strong>sammlung.json</strong> hoch, um die Objekte Ihrer Sammlung zu durchsuchen und
-          daraus automatisch einen Quiz zu generieren.<br><br>
-          Die JSON-Datei sollte Objekte mit den Feldern <strong>titel</strong>, <strong>künstler</strong> und
-          <strong>jahr</strong> enthalten.
-        </p>
+        <h3>1128 – 1600 · Mittelalter & Frühe Neuzeit</h3>
+        <p>Die erste urkundliche Erwähnung von Graz stammt aus dem Jahr 1128. In diesen Jahrhunderten entwickelte sich
+          Graz von einer Burgsiedlung zur bedeutenden Residenzstadt der Habsburger. Kaiser Friedrich III. wählte Graz
+          als Residenz – der Schlossberg, die Stadtmauer und frühe Kirchen prägen das Bild dieser Epoche.</p>
       </div>
       <div class="card">
-        <h2>Beispiel JSON-Format</h2>
-        <pre
-          style="background:var(--parchment); padding:1rem; font-size:0.85rem; overflow-x:auto; border:1px solid var(--border); line-height:1.6;">[
-  {
-    "titel": "Die Sternennacht",
-    "künstler": "Vincent van Gogh",
-    "jahr": "1889",
-    "bild_url": "https://..."
-  }
-]</pre>
+        <h3>1600 – 1809 · Barock & Aufklärung</h3>
+        <p>Die Barockzeit brachte große architektonische Veränderungen. Kirchen, Paläste und Plätze wurden neu
+          gestaltet. Die Jesuiten prägten Kultur und Bildung. 1619 verlor Graz seinen Status als Residenzstadt, blieb
+          aber Hauptstadt der Steiermark. Napoleon besetzte die Stadt 1809.</p>
+      </div>
+      <div class="card">
+        <h3>1809 – 1914 · Industrialisierung & Moderne</h3>
+        <p>Die Eisenbahn kam 1844 nach Graz. Industrie, Bevölkerungswachstum und neue Stadtteile prägten das 19.
+          Jahrhundert. Nikola Tesla studierte am Joanneum. Der Stadtpark wurde 1869 eröffnet. Graz wuchs von 30.000 auf
+          über 150.000 Einwohner·innen.</p>
+      </div>
+      <div class="card">
+        <h3>1914 – 1945 · Weltkriege & Zwischenkriegszeit</h3>
+        <p>Zwei Weltkriege, wirtschaftliche Not und politische Radikalisierung kennzeichnen diese Epoche. Graz erhielt
+          den NS-Titel „Stadt der Volkserhebung". Die Synagoge wurde 1938 zerstört. Über 70 Bombenangriffe trafen die
+          Stadt. Am 5. Mai 1945 endete der Krieg.</p>
+      </div>
+      <div class="card">
+        <h3>1945 – 2003 · Wiederaufbau & Kulturhauptstadt</h3>
+        <p>Demokratie, Wiederaufbau und kultureller Aufbruch. 1960 entstand das Forum Stadtpark als Zentrum der
+          Avantgarde. 1999 wurde die Altstadt UNESCO-Weltkulturerbe. 2003 war Graz Kulturhauptstadt Europas – Kunsthaus
+          und Murinsel entstanden als Symbole der Moderne.</p>
+      </div>
+    </div>
+
+    <!-- ══ ÜBER ══ -->
+    <div id="panel-ueber" class="panel">
+      <div class="section-title">Über das GrazQuiz</div>
+      <div class="card">
+        <h3>Was ist das GrazQuiz?</h3>
+        <p>Das GrazQuiz basiert auf der digitalen Dauerausstellung <strong style="color:var(--off-white)">360 GRAZ. Eine
+            Geschichte der Stadt</strong> des GrazMuseums. Es umfasst 40 Fragen zu allen fünf Epochen – mit
+          Antwort-Erklärungen nach jeder Frage.<br><br>Als <strong style="color:var(--off-white)">Progressive Web
+            App</strong> kann sie auf dem Homescreen installiert werden und funktioniert auch offline.</p>
+      </div>
+      <div class="card">
+        <h3>Epochen</h3>
+        <div class="epoch-list">
+          <div class="epoch-item">
+            <div class="epoch-dot"></div>1128–1600 · Mittelalter & Frühe Neuzeit
+          </div>
+          <div class="epoch-item">
+            <div class="epoch-dot"></div>1600–1809 · Barock & Aufklärung
+          </div>
+          <div class="epoch-item">
+            <div class="epoch-dot"></div>1809–1914 · Industrialisierung & Moderne
+          </div>
+          <div class="epoch-item">
+            <div class="epoch-dot"></div>1914–1945 · Weltkriege & Zwischenkriegszeit
+          </div>
+          <div class="epoch-item">
+            <div class="epoch-dot"></div>1945–2003 · Wiederaufbau & Kulturhauptstadt
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Quelle</h3>
+        <p>Alle Inhalte basieren auf der Ausstellung <strong style="color:var(--off-white)">360 GRAZ</strong> des
+          GrazMuseums.<br>
+          <a href="https://360.grazmuseum.at" target="_blank" style="color:var(--accent)">360.grazmuseum.at ↗</a>
+        </p>
       </div>
     </div>
 
   </main>
 
   <footer>
-    &copy; Museum Quest &nbsp;·&nbsp; Eine Progressive Web App
+    &copy; GrazMuseum 2026 &nbsp;·&nbsp;
+    <a href="https://360.grazmuseum.at" target="_blank">360.grazmuseum.at</a>
+    &nbsp;·&nbsp; PWA
   </footer>
 
   <script>
-    /* ── DATEN ── */
-    const DEMO = [
-      { titel: "Mona Lisa", künstler: "Leonardo da Vinci", jahr: "1503", kategorie: "Ölgemälde" },
-      { titel: "Die Sternennacht", künstler: "Vincent van Gogh", jahr: "1889", kategorie: "Ölgemälde" },
-      { titel: "Das Mädchen mit dem Perlenohrring", künstler: "Johannes Vermeer", jahr: "1665", kategorie: "Ölgemälde" },
-      { titel: "Der Schrei", künstler: "Edvard Munch", jahr: "1893", kategorie: "Tempera" },
-      { titel: "Guernica", künstler: "Pablo Picasso", jahr: "1937", kategorie: "Ölgemälde" },
-      { titel: "Die Erschaffung Adams", künstler: "Michelangelo", jahr: "1512", kategorie: "Fresko" },
-      { titel: "Das Abendmahl", künstler: "Leonardo da Vinci", jahr: "1498", kategorie: "Fresko" },
-      { titel: "Impression, Sonnenaufgang", künstler: "Claude Monet", jahr: "1872", kategorie: "Ölgemälde" }
+    const FRAGEN = [
+      /* ── 1128–1600 ── */
+      { epoche: 0, epochLabel: "1128–1600", frage: "In welchem Jahr wurde Graz erstmals urkundlich erwähnt?", richtig: "1128", optionen: ["1128", "1147", "1180", "1222"], fakt: "Die erste Erwähnung findet sich in einer Urkunde des Markgrafen Otakar III." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Welches Bauwerk ist das bekannteste Wahrzeichen von Graz auf dem Schlossberg?", richtig: "Der Uhrturm", optionen: ["Der Uhrturm", "Der Domturm", "Der Franziskanerturm", "Der Habsburgturm"], fakt: "Der Uhrturm aus dem 16. Jahrhundert ist das Wahrzeichen von Graz – die Bürger kauften ihn frei." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Welche Herrscherdynastie machte Graz zur Residenzstadt?", richtig: "Die Habsburger", optionen: ["Die Habsburger", "Die Wittelsbacher", "Die Babenberger", "Die Zähringer"], fakt: "Kaiser Friedrich III. wählte Graz im 15. Jahrhundert als seine Residenz." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Welcher Fluss prägt die Lage der Stadt Graz?", richtig: "Die Mur", optionen: ["Die Mur", "Die Raab", "Die Drau", "Die Salzach"], fakt: "Die Mur teilt Graz und war seit jeher wichtig für Handel und Versorgung." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Wann erhielt Graz das Stadtrecht?", richtig: "1281", optionen: ["1281", "1150", "1320", "1389"], fakt: "König Rudolf I. von Habsburg verlieh Graz 1281 das Stadtrecht." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Welche Gefahr bedrohte Graz im 16. Jahrhundert am stärksten?", richtig: "Die Türkengefahr", optionen: ["Die Türkengefahr", "Große Überschwemmungen", "Hungersnöte", "Bürgerkriege"], fakt: "Graz war als Vorposten gegen die osmanische Expansion eine wichtige Festung." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Wie wurde Graz im Mittelalter militärisch gesichert?", richtig: "Durch Stadtmauer und befestigten Schlossberg", optionen: ["Durch Stadtmauer und befestigten Schlossberg", "Durch einen breiten Stadtgraben", "Durch ein Netz aus Wachtürmen", "Durch die natürliche Lage am Meer"], fakt: "Der Schlossberg war eine nahezu uneinnehmbare Festung zum Schutz der Stadt." },
+      { epoche: 0, epochLabel: "1128–1600", frage: "Welche Universität ist die älteste der Steiermark?", richtig: "Universität Graz (gegründet 1585)", optionen: ["Universität Graz (gegründet 1585)", "TU Graz", "Montanuniversität Leoben", "Universität Klagenfurt"], fakt: "Erzherzog Karl II. gründete die Universität Graz 1585, geführt von den Jesuiten." },
+
+      /* ── 1600–1809 ── */
+      { epoche: 1, epochLabel: "1600–1809", frage: "Welcher Orden prägte das kulturelle Leben in Graz ab dem frühen 17. Jahrhundert?", richtig: "Die Jesuiten", optionen: ["Die Jesuiten", "Die Franziskaner", "Die Dominikaner", "Die Augustiner"], fakt: "Die Jesuiten gründeten 1585 die Universität Graz und prägten Bildung und Kultur." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Welcher Baustil prägte Graz im 17. und 18. Jahrhundert?", richtig: "Der Barock", optionen: ["Der Barock", "Die Gotik", "Der Jugendstil", "Der Klassizismus"], fakt: "Zahlreiche Kirchen und Paläste wurden im Barockstil umgestaltet oder neu errichtet." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Wann verlor Graz seinen Status als Residenzstadt der Habsburger?", richtig: "1619", optionen: ["1619", "1683", "1740", "1780"], fakt: "Kaiser Ferdinand II. verlegte den Hof 1619 nach Wien." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Welche Kaiserin reformierte im 18. Jahrhundert Verwaltung und Bildungswesen?", richtig: "Maria Theresia", optionen: ["Maria Theresia", "Maria Antonia", "Eleonore Magdalene", "Elisabeth I."], fakt: "Maria Theresia (1740–1780) modernisierte Verwaltung, Militär und Bildungswesen grundlegend." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Was geschah im Jahr 1809 in Graz militärisch?", richtig: "Napoleonische Truppen besetzten die Stadt", optionen: ["Napoleonische Truppen besetzten die Stadt", "Österreich gewann eine große Seeschlacht", "Graz wurde Bundeshauptstadt", "Russische Truppen marschierten ein"], fakt: "Im Frieden von Schönbrunn 1809 musste Österreich viele Gebiete an Napoleon abtreten." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Was musste Österreich nach Napoleons Sieg 1809 schleifen?", richtig: "Die Festung auf dem Schlossberg", optionen: ["Die Festung auf dem Schlossberg", "Die Stadtmauer von Wien", "Das Landhaus in Graz", "Die alte Universität"], fakt: "Uhrturm und Glockenturm wurden von den Bürgern freigekauft – deshalb stehen sie noch." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Welches Gebäude gilt als eines der schönsten Renaissancebauwerke Österreichs in Graz?", richtig: "Das Landhaus", optionen: ["Das Landhaus", "Die Burg", "Das Rathaus", "Der Dom"], fakt: "Das Landhaus mit seinem Arkadenhof ist ein Meisterwerk der Renaissance-Architektur." },
+      { epoche: 1, epochLabel: "1600–1809", frage: "Welches Ereignis erschütterte Europa 1683 und bedrohte auch Graz?", richtig: "Die zweite Türkenbelagerung Wiens", optionen: ["Die zweite Türkenbelagerung Wiens", "Der Dreißigjährige Krieg", "Die Pest", "Ein großes Erdbeben"], fakt: "1683 erreichte die osmanische Bedrohung ihren Höhepunkt vor Wien." },
+
+      /* ── 1809–1914 ── */
+      { epoche: 2, epochLabel: "1809–1914", frage: "Wann erreichte die Eisenbahn erstmals Graz?", richtig: "1844", optionen: ["1844", "1860", "1832", "1878"], fakt: "Die Südbahn verband Graz 1844 mit Wien und revolutionierte Handel und Mobilität." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Wann wurde der Grazer Stadtpark eröffnet?", richtig: "1869", optionen: ["1869", "1850", "1882", "1900"], fakt: "Der Stadtpark wurde 1869 eröffnet und ist heute eine der beliebtesten Grünanlagen." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Was bedeutete die Industrialisierung demografisch für Graz?", richtig: "Starkes Bevölkerungswachstum durch Zuzug", optionen: ["Starkes Bevölkerungswachstum durch Zuzug", "Massenflucht aus der Stadt", "Rückgang der Geburtenrate", "Kaum Veränderungen"], fakt: "Graz wuchs von rund 30.000 Einwohnern 1800 auf über 150.000 um 1900." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Wofür ist Nikola Tesla bekannt, der in Graz studierte?", richtig: "Erfindungen im Bereich Elektrizität und Wechselstrom", optionen: ["Erfindungen im Bereich Elektrizität und Wechselstrom", "Die Erfindung der Dampfmaschine", "Entdeckungen in der Chemie", "Entwicklung der Eisenbahn"], fakt: "Tesla studierte 1875–1878 am Joanneum in Graz und entwickelte frühe Ideen zum Wechselstrom." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Wann wurde die Straßenbahn in Graz eingeführt?", richtig: "1878", optionen: ["1878", "1900", "1865", "1912"], fakt: "Zunächst als Pferdebahn, ab 1899 fuhr die Grazer Straßenbahn elektrisch." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Welcher Baustil prägte neue Grazer Stadtviertel im 19. Jahrhundert?", richtig: "Historismus (Gründerzeit)", optionen: ["Historismus (Gründerzeit)", "Jugendstil", "Expressionismus", "Bauhaus"], fakt: "Prächtige Gründerzeit-Bauten entstanden entlang des Rings und der neuen Prachtstraßen." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Was prägte Graz im Revolutionsjahr 1848?", richtig: "Aufstände und Forderungen nach Demokratie", optionen: ["Aufstände und Forderungen nach Demokratie", "Eine große Überschwemmung", "Die Gründung der Universität", "Ein großer Stadtbrand"], fakt: "Auch in Graz forderten Bürger und Studenten Pressefreiheit und eine Verfassung." },
+      { epoche: 2, epochLabel: "1809–1914", frage: "Welches Forschungsinstitut wurde 1811 in Graz gegründet?", richtig: "Das Joanneum", optionen: ["Das Joanneum", "Die TU Graz", "Das Kunsthaus", "Die Akademie der Wissenschaften"], fakt: "Erzherzog Johann gründete das Joanneum 1811 als universales Bildungs- und Forschungsinstitut." },
+
+      /* ── 1914–1945 ── */
+      { epoche: 3, epochLabel: "1914–1945", frage: "Welchen Beinamen erhielt Graz in der NS-Zeit?", richtig: "Stadt der Volkserhebung", optionen: ["Stadt der Volkserhebung", "Stadt des Führers", "Perle der Steiermark", "Tor zum Süden"], fakt: "Der Titel bezog sich auf den frühen und starken Zulauf zum Nationalsozialismus in Graz." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Was geschah in Graz in der Nacht vom 9. auf den 10. November 1938?", richtig: "Die Synagoge wurde zerstört", optionen: ["Die Synagoge wurde zerstört", "Graz wurde bombardiert", "Der Bürgermeister wurde abgesetzt", "Eine Friedenskundgebung fand statt"], fakt: "In der Reichspogromnacht wurde die Grazer Synagoge in der Griesgasse verwüstet." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Wann endete der Erste Weltkrieg?", richtig: "1918", optionen: ["1918", "1916", "1920", "1919"], fakt: "Mit dem Waffenstillstand vom 11. November 1918 endete der Erste Weltkrieg." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Was bedeutete das Ende des Ersten Weltkriegs für Österreich?", richtig: "Ende der Monarchie und Gründung der Republik", optionen: ["Ende der Monarchie und Gründung der Republik", "Anschluss an Deutschland", "Gründung des Königreichs Österreich", "Keine wesentlichen Änderungen"], fakt: "Die Republik Österreich wurde am 12. November 1918 ausgerufen." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Wann erfolgte der Anschluss Österreichs an das Deutsche Reich?", richtig: "1938", optionen: ["1938", "1933", "1939", "1936"], fakt: "Am 12. März 1938 marschierten deutsche Truppen in Österreich ein." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Wer besetzte Graz am 5. Mai 1945?", richtig: "Sowjetische Truppen", optionen: ["Sowjetische Truppen", "Amerikanische Truppen", "Britische Truppen", "Österreichische Partisanen"], fakt: "Die Sowjetarmee besetzte Graz, übergab es aber bald der britischen Besatzungszone." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Was richteten alliierte Bombenangriffe 1944/45 in Graz an?", richtig: "Schwere Zerstörungen in Stadt und Industrie", optionen: ["Schwere Zerstörungen in Stadt und Industrie", "Kaum Schäden", "Nur der Bahnhof wurde getroffen", "Die Altstadt wurde vollständig zerstört"], fakt: "Über 70 Luftangriffe trafen Graz; rund 14 % der Gebäude wurden stark beschädigt." },
+      { epoche: 3, epochLabel: "1914–1945", frage: "Welche Wirtschaftskrise erschütterte Graz und Europa in den 1930er Jahren?", richtig: "Die Weltwirtschaftskrise", optionen: ["Die Weltwirtschaftskrise", "Der Börsenboom", "Die Hyperinflation", "Der Ölschock"], fakt: "Die Krise ab 1929 führte zu Massenarbeitslosigkeit und politischer Radikalisierung." },
+
+      /* ── 1945–2003 ── */
+      { epoche: 4, epochLabel: "1945–2003", frage: "Wann wurde die Grazer Altstadt zum UNESCO-Weltkulturerbe erklärt?", richtig: "1999", optionen: ["1999", "1985", "2003", "1992"], fakt: "Das historische Zentrum von Graz wurde 1999 in die UNESCO-Welterbeliste aufgenommen." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "In welchem Jahr war Graz Kulturhauptstadt Europas?", richtig: "2003", optionen: ["2003", "1995", "1998", "2000"], fakt: "Unter dem Motto 'Graz 2003' war die Stadt Treffpunkt für europäische Kunst und Kultur." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "Welches moderne Kunstgebäude wurde 2003 am Grazer Murufer eröffnet?", richtig: "Das Kunsthaus Graz", optionen: ["Das Kunsthaus Graz", "Das neue Rathaus", "Das Joanneumsviertel", "Die Stadthalle"], fakt: "Das 'Friendly Alien' von Cook & Fournier ist ein ikonisches Zeichen der Moderne." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "Welche schwimmende Konstruktion wurde 2003 in der Mur errichtet?", richtig: "Die Murinsel", optionen: ["Die Murinsel", "Die Schlossinsel", "Die Andritzinsel", "Die Murpromenade"], fakt: "Die Murinsel ist eine Stahl-Glas-Konstruktion des Künstlers Vito Acconci." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "In welcher Besatzungszone lag Graz nach 1945?", richtig: "Britische Besatzungszone", optionen: ["Britische Besatzungszone", "Amerikanische Zone", "Französische Zone", "Sowjetische Zone"], fakt: "Graz lag in der britischen Zone, obwohl zunächst von der Sowjetunion besetzt." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "Wofür ist das Forum Stadtpark bekannt, gegründet 1960?", richtig: "Zentrum der österreichischen Avantgarde-Kunst", optionen: ["Zentrum der österreichischen Avantgarde-Kunst", "Ein Sportzentrum", "Ein Einkaufszentrum", "Ein Parteizentrum"], fakt: "Das Forum Stadtpark war Heimat der Grazer Gruppe und der österreichischen Avantgarde." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "Wann trat Österreich der Europäischen Union bei?", richtig: "1995", optionen: ["1995", "1989", "2000", "1986"], fakt: "Nach einem Volksbegehren trat Österreich am 1. Jänner 1995 der EU bei." },
+      { epoche: 4, epochLabel: "1945–2003", frage: "Welches Festival wurde 1968 in Graz als eines der ältesten Avantgarde-Festivals gegründet?", richtig: "Der Steirische Herbst", optionen: ["Der Steirische Herbst", "Das Grazer Filmfestival", "Der Styriarte", "Das Literaturfestival"], fakt: "Der Steirische Herbst ist eines der bedeutendsten Avantgarde-Festivals Europas." },
     ];
 
-    let collection = [];
-    let questions = [];
-    let current = 0;
-    let score = 0;
-    let answered = false;
+    let selectedEpoch = 'alle';
+    let questions = [], current = 0, score = 0, answered = false;
 
-    /* ── NAVIGATION ── */
     function showPanel(id, btn) {
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -620,91 +786,20 @@
       if (btn) btn.classList.add('active');
     }
 
-    /* ── DATEI LADEN ── */
-    document.getElementById('file-input').addEventListener('change', function (e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = ev => {
-        try {
-          const data = JSON.parse(ev.target.result);
-          collection = data;
-          renderCollection();
-        } catch { alert('Ungültige JSON-Datei.'); }
-      };
-      reader.readAsText(file);
-    });
-
-    function loadDemo() {
-      collection = DEMO;
-      renderCollection();
+    function selectEpoch(el) {
+      document.querySelectorAll('.epoch-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedEpoch = el.dataset.epoch;
     }
 
-    /* ── SAMMLUNG ANZEIGEN ── */
-    function renderCollection() {
-      const container = document.getElementById('collection-container');
-      if (!collection.length) {
-        container.innerHTML = '<p style="text-align:center;color:var(--muted);font-style:italic;">Keine Objekte gefunden.</p>';
-        return;
-      }
-      let html = `<div class="collection-grid">`;
-      collection.forEach(obj => {
-        const titel = obj.titel || obj.title || '—';
-        const künstler = obj.künstler || obj.artist || '';
-        const jahr = obj.jahr || obj.year || '';
-        const bild = obj.bild_url || obj.image || '';
-        const meta = [künstler, jahr].filter(Boolean).join(', ');
-        html += `
-        <div class="object-card">
-          <div class="img-wrap">
-            ${bild
-            ? `<img src="${bild}" alt="${titel}" loading="lazy" />`
-            : `<span class="placeholder">&#9670;</span>`}
-          </div>
-          <div class="info">
-            <h3>${titel}</h3>
-            <p class="meta">${meta}</p>
-          </div>
-        </div>`;
-      });
-      html += `</div>`;
-      container.innerHTML = html;
-    }
-
-    /* ── QUIZ GENERIEREN ── */
     function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
 
-    function buildQuestions(data) {
-      const qs = [];
-      data.forEach(obj => {
-        const titel = obj.titel || obj.title || '';
-        const künstler = obj.künstler || obj.artist || '';
-        const jahr = obj.jahr || obj.year || '';
-        const others = data.filter(d => d !== obj);
-
-        if (künstler && others.length >= 3) {
-          const wrong = shuffle(others.map(d => d.künstler || d.artist).filter(Boolean).filter(a => a !== künstler)).slice(0, 3);
-          if (wrong.length === 3) qs.push({ q: `Wer schuf „${titel}"?`, correct: künstler, options: shuffle([künstler, ...wrong]) });
-        }
-        if (jahr && others.length >= 3) {
-          const wrong = shuffle(others.map(d => d.jahr || d.year).filter(Boolean).filter(y => y !== jahr)).slice(0, 3);
-          if (wrong.length === 3) qs.push({ q: `In welchem Jahr entstand „${titel}"?`, correct: jahr, options: shuffle([jahr, ...wrong]) });
-        }
-        if (titel && künstler && others.length >= 3) {
-          const wrong = shuffle(others.map(d => d.titel || d.title).filter(Boolean).filter(t => t !== titel)).slice(0, 3);
-          if (wrong.length === 3) qs.push({ q: `Welches Werk stammt von ${künstler}?`, correct: titel, options: shuffle([titel, ...wrong]) });
-        }
-      });
-      return shuffle(qs).slice(0, 10);
-    }
-
     function startQuiz() {
-      const data = collection.length ? collection : DEMO;
-      questions = buildQuestions(data);
-      if (questions.length < 3) {
-        document.getElementById('quiz-hint').textContent = 'Bitte laden Sie zuerst eine Sammlung mit mindestens 4 Objekten.';
-        return;
-      }
+      const pool = selectedEpoch === 'alle'
+        ? FRAGEN
+        : FRAGEN.filter(f => f.epoche === parseInt(selectedEpoch));
+      if (pool.length < 4) { document.getElementById('quiz-hint').textContent = 'Nicht genug Fragen.'; return; }
+      questions = shuffle(pool).slice(0, Math.min(10, pool.length));
       current = 0; score = 0;
       document.getElementById('quiz-start').style.display = 'none';
       document.getElementById('quiz-result').style.display = 'none';
@@ -716,37 +811,45 @@
       if (current >= questions.length) { showResult(); return; }
       answered = false;
       const q = questions[current];
-      document.getElementById('question-text').textContent = q.q;
-      document.getElementById('q-counter').textContent = `Frage ${current + 1} / ${questions.length}`;
+      document.getElementById('q-epoch-tag').textContent = 'Epoche ' + q.epochLabel;
+      document.getElementById('question-text').textContent = q.frage;
+      document.getElementById('q-counter').textContent = `${current + 1} / ${questions.length}`;
       document.getElementById('score-badge').textContent = `Punkte: ${score}`;
       document.getElementById('progress-fill').style.width = `${(current / questions.length) * 100}%`;
       document.getElementById('feedback').textContent = '';
       document.getElementById('next-btn').style.display = 'none';
+      const fb = document.getElementById('fact-box');
+      fb.classList.remove('show'); fb.textContent = '';
 
       const optDiv = document.getElementById('options');
       optDiv.innerHTML = '';
-      q.options.forEach(opt => {
+      shuffle(q.optionen).forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'opt-btn';
         btn.textContent = opt;
-        btn.onclick = () => answer(opt, btn, q.correct);
+        btn.onclick = () => answer(opt, btn, q.richtig, q.fakt);
         optDiv.appendChild(btn);
       });
     }
 
-    function answer(chosen, btn, correct) {
+    function answer(chosen, btn, richtig, fakt) {
       if (answered) return;
       answered = true;
       document.querySelectorAll('.opt-btn').forEach(b => {
         b.disabled = true;
-        if (b.textContent === correct) b.classList.add('correct');
+        if (b.textContent === richtig) b.classList.add('correct');
       });
-      if (chosen === correct) {
+      if (chosen === richtig) {
         score++;
         document.getElementById('feedback').textContent = '✓ Richtig!';
       } else {
         btn.classList.add('wrong');
-        document.getElementById('feedback').textContent = `Leider falsch. Richtige Antwort: ${correct}`;
+        document.getElementById('feedback').textContent = `Falsch. Richtig: ${richtig}`;
+      }
+      if (fakt) {
+        const fb = document.getElementById('fact-box');
+        fb.textContent = '💡 ' + fakt;
+        fb.classList.add('show');
       }
       document.getElementById('next-btn').style.display = 'inline-block';
     }
@@ -758,11 +861,17 @@
       document.getElementById('quiz-result').style.display = 'block';
       const pct = Math.round((score / questions.length) * 100);
       document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
-      const labels = pct === 100 ? 'Außergewöhnlich – ein wahrer Kenner!'
-        : pct >= 75 ? 'Sehr gut – beeindruckende Kenntnisse.'
-          : pct >= 50 ? 'Solide – mit etwas Übung noch besser.'
-            : 'Weiter studieren – die Sammlung wartet.';
-      document.getElementById('result-label').textContent = labels;
+      document.getElementById('result-title').textContent =
+        pct === 100 ? 'Stadthistoriker·in!' :
+          pct >= 80 ? 'Graz-Kenner·in' :
+            pct >= 60 ? 'Stadtbewohner·in' :
+              pct >= 40 ? 'Touristin / Tourist' : 'Neuankömmling';
+      document.getElementById('result-label').textContent =
+        pct === 100 ? 'Perfekt – du kennst Graz wie deine Westentasche.' :
+          pct >= 80 ? 'Beeindruckend! Nur wenige Details fehlen noch.' :
+            pct >= 60 ? 'Solide Grundkenntnisse – weitermachen!' :
+              pct >= 40 ? 'Du lernst die Stadt kennen.' :
+                'Graz wartet darauf, entdeckt zu werden.';
     }
 
     function restartQuiz() {
@@ -770,12 +879,10 @@
       document.getElementById('quiz-start').style.display = 'block';
     }
 
-    /* ── SERVICE WORKER ── */
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
   </script>
-
 </body>
 
 </html>
