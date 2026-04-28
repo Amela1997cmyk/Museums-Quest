@@ -240,7 +240,7 @@ function answer(chosen, btn, correct) {
 **Ablauf:**
 1. Vergleiche `chosen` (deine Antwort) mit `correct` (richtige Antwort)
 2. Wenn richtig → +1 Punkt, Button wird **grün**
-3. Wenn falsch → Button wird **orange**, und die richtige Antwort wird grün
+3. Wenn falsch → Button wird **rot**, und die richtige Antwort wird grün
 4. Zeige Erklärung (der Fakt) an
 5. Zeige "Weiter"-Button
 
