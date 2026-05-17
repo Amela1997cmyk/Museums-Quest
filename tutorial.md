@@ -406,6 +406,4 @@ Kürzlich wurde im `app.js` eine einfache Session‑Wiederaufnahme ergänzt. Zie
 - **Wann gelöscht wird:**
   - bei `restartQuiz()` wird die Session entfernt, sodass ein komplett neuer Durchlauf möglich ist.
 
-- **Hinweis:** Die Implementierung nutzt `sessionStorage` (Daten bleiben nur in diesem Tab). Wenn du stattdessen dauerhafte Highscores möchtest, empfiehlt sich `localStorage`.
-
-Wenn du möchtest, ergänze ich noch eine Anzeige für „Fortsetzen“ im Start‑Panel oder einen persistenten Highscore in `localStorage`.
+- **Hinweis:** Die Implementierung nutzt `sessionStorage` (Daten bleiben nur in diesem Tab). 
