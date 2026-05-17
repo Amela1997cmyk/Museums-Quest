@@ -53,6 +53,40 @@ const FRAGEN = [
 
 let selectedEpoch = 'alle';
 let questions = [], current = 0, score = 0, answered = false;
+let questionsIdx = [];
+const STORAGE_KEY = 'mq_session';
+
+function saveSession() {
+    try {
+        const data = {
+            selectedEpoch,
+            questionsIdx,
+            current,
+            score
+        };
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) { /* ignore storage errors */ }
+}
+
+function loadSession() {
+    try {
+        const raw = sessionStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        if (!data || !Array.isArray(data.questionsIdx)) return false;
+        // Validate indices
+        const valid = data.questionsIdx.every(i => Number.isInteger(i) && i >= 0 && i < FRAGEN.length);
+        if (!valid) return false;
+        selectedEpoch = data.selectedEpoch || 'alle';
+        questionsIdx = data.questionsIdx;
+        questions = questionsIdx.map(i => FRAGEN[i]);
+        current = Number.isInteger(data.current) ? data.current : 0;
+        score = Number.isInteger(data.score) ? data.score : 0;
+        return true;
+    } catch (e) { return false; }
+}
+
+function clearSession() { sessionStorage.removeItem(STORAGE_KEY); questionsIdx = []; }
 
 function showPanel(id, btn) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
@@ -65,6 +99,7 @@ function selectEpoch(el) {
     document.querySelectorAll('.epoch-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     selectedEpoch = el.dataset.epoch;
+    saveSession();
 }
 
 function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
@@ -74,8 +109,13 @@ function startQuiz() {
         ? FRAGEN
         : FRAGEN.filter(f => f.epoche === parseInt(selectedEpoch));
     if (pool.length < 4) { document.getElementById('quiz-hint').textContent = 'Nicht genug Fragen.'; return; }
-    questions = shuffle(pool).slice(0, Math.min(10, pool.length));
+    // Build an index list to store lightweight references in sessionStorage
+    const poolIdx = pool.map(q => FRAGEN.indexOf(q));
+    const chosenIdx = shuffle(poolIdx).slice(0, Math.min(10, poolIdx.length));
+    questionsIdx = chosenIdx;
+    questions = questionsIdx.map(i => FRAGEN[i]);
     current = 0; score = 0;
+    saveSession();
     document.getElementById('quiz-start').style.display = 'none';
     document.getElementById('quiz-result').style.display = 'none';
     document.getElementById('quiz-running').style.display = 'block';
@@ -121,6 +161,7 @@ function answer(chosen, btn, richtig, fakt) {
         btn.classList.add('wrong');
         document.getElementById('feedback').textContent = `Falsch. Richtig: ${richtig}`;
     }
+    saveSession();
     if (fakt) {
         const fb = document.getElementById('fact-box');
         fb.textContent = '💡 ' + fakt;
@@ -161,8 +202,25 @@ function showResult() {
 function restartQuiz() {
     document.getElementById('quiz-result').style.display = 'none';
     document.getElementById('quiz-start').style.display = 'block';
+    clearSession();
+}
+
+function tryRestoreSession() {
+    if (loadSession()) {
+        // reflect selected epoch in UI if possible
+        document.querySelectorAll('.epoch-card').forEach(c => c.classList.remove('selected'));
+        const sel = document.querySelector(`.epoch-card[data-epoch="${selectedEpoch}"]`);
+        if (sel) sel.classList.add('selected');
+        document.getElementById('quiz-start').style.display = 'none';
+        document.getElementById('quiz-result').style.display = 'none';
+        document.getElementById('quiz-running').style.display = 'block';
+        showQuestion();
+    }
 }
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js');
 }
+
+// try to restore an in-progress session (uses sessionStorage)
+tryRestoreSession();

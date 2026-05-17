@@ -80,3 +80,6 @@ Diese Liste ist für euch. Geht sie vor der Abgabe durch.
 - [ ] Mindestens 4–5 Git-Commits mit sinnvollen Messages
 - [ ] Pflicht-Video geschaut
 - [ ] Ihr könnt euer HTML und CSS erklären
+
+localstorage -Browser gespeichert einbauen
+session storage

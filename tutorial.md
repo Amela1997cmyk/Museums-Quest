@@ -383,3 +383,29 @@ Entfernt `selected` von allen Kacheln, fügt es der neuen hinzu.
                               }
 Ganz am Ende, zwei Zeilen. Prüft ob der Browser Service Worker unterstützt (tun fast alle modernen Browser), 
 und registriert dann die service-worker.js Datei – die macht die App offline-fähig.
+
+---
+
+## 🔁 Session-Wiederaufnahme mit `sessionStorage`
+
+Kürzlich wurde im `app.js` eine einfache Session‑Wiederaufnahme ergänzt. Ziel: Ein laufendes Quiz beim Neuladen des Tabs nicht zu verlieren.
+
+- **Was wird gespeichert:** `selectedEpoch`, `questionsIdx`, `current`, `score` (als JSON unter dem Key `mq_session`).
+- **Warum `questionsIdx`:** Statt komplette Frage‑Objekte zu speichern werden Indizes in `FRAGEN` benutzt — das hält die Session‑Daten klein.
+- **Neue Helferfunktionen:**
+  - `saveSession()` — schreibt aktuellen Zustand in `sessionStorage`.
+  - `loadSession()` — liest und validiert gespeicherte Daten, stellt `questions` aus `questionsIdx` wieder her.
+  - `clearSession()` — entfernt die gespeicherte Session (wird beim Neustart verwendet).
+  - `tryRestoreSession()` — prüft beim Laden der Seite, ob eine Session vorhanden ist, und setzt das Quiz fort.
+
+- **Wann gespeichert wird:**
+  - bei Epoche‑Auswahl (`selectEpoch()`),
+  - beim Start des Quiz (`startQuiz()`),
+  - nach jeder beantworteten Frage (`answer()`).
+
+- **Wann gelöscht wird:**
+  - bei `restartQuiz()` wird die Session entfernt, sodass ein komplett neuer Durchlauf möglich ist.
+
+- **Hinweis:** Die Implementierung nutzt `sessionStorage` (Daten bleiben nur in diesem Tab). Wenn du stattdessen dauerhafte Highscores möchtest, empfiehlt sich `localStorage`.
+
+Wenn du möchtest, ergänze ich noch eine Anzeige für „Fortsetzen“ im Start‑Panel oder einen persistenten Highscore in `localStorage`.
