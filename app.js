@@ -121,7 +121,7 @@ function startQuiz() {
     document.getElementById('quiz-running').style.display = 'block';
     showQuestion();
 }
-
+/* UI aktualisieren*/
 function showQuestion() {
     if (current >= questions.length) { showResult(); return; }
     answered = false;
@@ -179,10 +179,11 @@ function showResult() {
     const pct = Math.round((score / questions.length) * 100);
 
     const emoji =
-        pct === 100 ? '🏛️' :
-            pct >= 80 ? '🗝️' :
-                pct >= 60 ? '🏘️' :
-                    pct >= 40 ? '🧳' : '🚂';
+        pct === 100 ? '🏛️' : /*Stadthistoriker·in*/
+            pct >= 80 ? '🗝️' : /*Graz-Kenner·in*/
+                pct >= 60 ? '🏘️' : /*Stadtbewohner·in*/
+                    pct >= 40 ? '🧳' : '🚂'; /*Touristin / Tourist ; Neuankömmling*/
+
 
     document.getElementById('result-animation').textContent = emoji;
     document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
