@@ -105,16 +105,16 @@ function selectEpoch(el) {
 function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
 
 function startQuiz() {
-    const pool = selectedEpoch === 'alle'
+    const pool = selectedEpoch === 'alle' /* Wenn alle Epochen ausgewählt sind, nimm den gesamten Fragenpool*/
         ? FRAGEN
-        : FRAGEN.filter(f => f.epoche === parseInt(selectedEpoch));
+        : FRAGEN.filter(f => f.epoche === parseInt(selectedEpoch)); /* Ansonsten filtere nach der ausgewählten Epoche */
     if (pool.length < 4) { document.getElementById('quiz-hint').textContent = 'Nicht genug Fragen.'; return; }
     // Build an index list to store lightweight references in sessionStorage
     const poolIdx = pool.map(q => FRAGEN.indexOf(q));
     const chosenIdx = shuffle(poolIdx).slice(0, Math.min(10, poolIdx.length));
     questionsIdx = chosenIdx;
     questions = questionsIdx.map(i => FRAGEN[i]);
-    current = 0; score = 0;
+    current = 0; score = 0; /* Alle Quiz-bezogenen Variablen zurücksetzen */
     saveSession();
     document.getElementById('quiz-start').style.display = 'none';
     document.getElementById('quiz-result').style.display = 'none';
@@ -124,7 +124,7 @@ function startQuiz() {
 /* UI aktualisieren*/
 function showQuestion() {
     if (current >= questions.length) { showResult(); return; }
-    answered = false;
+    answered = false; /* Antwortstatus zurücksetzen */
     const q = questions[current];
     document.getElementById('q-epoch-tag').textContent = 'Epoche ' + q.epochLabel;
     document.getElementById('question-text').textContent = q.frage;
