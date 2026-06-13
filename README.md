@@ -37,6 +37,9 @@ if ('serviceWorker' in navigator) {
 - Wenn der Browser die PWA unterstützt, kann die App damit auf dem Homescreen gespeichert werden.
 - Bei Smartphones erscheint der Installationsdialog oder eine Anleitung für das Hinzufügen zur Startseite.
 - Funktioniert die Installation nicht sofort, dann öffne das Browser-Menü und wähle „Zum Startbildschirm hinzufügen“ oder „App installieren“.
+- wenn 'beforeinstallprompt' nicht verfügbar ist, zeigt der Button jetzt eine klare Anleitung:
+Browser-Menü → Zum Startbildschirm hinzufügen
+in iOS: Teilen → Zum Home-Bildschirm hinzufügen
 
 # CSS-Highlights
 CSS-Variablen für einfache Farbverwaltung
