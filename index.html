@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Das GrazQuiz</title>
   <link rel="manifest" href="manifest.json" />
+  <meta name="application-name" content="Das GrazQuiz" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Das GrazQuiz" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="icon" href="icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 
@@ -23,7 +29,9 @@
         <div class="logo-sub"> Wie gut kennst du Graz?</div>
       </div>
     </div>
-    <div class="header-badge">Quiz App</div>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <button id="installBtn" class="header-badge install-btn" style="display:none" type="button">App installieren</button>
+    </div>
   </header>
 
   <div class="color-stripe"></div>

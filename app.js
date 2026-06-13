@@ -62,6 +62,7 @@ const EPOCH_NAMES = {
 let selectedEpoch = 'alle';
 let questions = [], current = 0, score = 0, answered = false;
 let questionsIdx = [];
+let deferredPrompt = null;
 const STORAGE_KEY = 'mq_session';
 
 function saveSession() {
@@ -226,6 +227,37 @@ function tryRestoreSession() {
         showQuestion();
     }
 }
+
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) {
+        installBtn.style.display = 'inline-block';
+    }
+});
+
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        if (choice.outcome === 'accepted') {
+            console.log('App install accepted');
+        } else {
+            console.log('App install dismissed');
+        }
+        deferredPrompt = null;
+        installBtn.style.display = 'none';
+    });
+}
+
+window.addEventListener('appinstalled', () => {
+    if (installBtn) {
+        installBtn.style.display = 'none';
+    }
+});
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js');
