@@ -2,6 +2,7 @@ const CACHE_NAME = 'graz-quiz-v1';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/impressum.html',
     '/manifest.json',
     '/icon.png',
     'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'

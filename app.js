@@ -51,6 +51,14 @@ const FRAGEN = [
     { epoche: 4, epochLabel: "1945–2003", frage: "Welches Festival wurde 1968 in Graz als eines der ältesten Avantgarde-Festivals gegründet?", richtig: "Der Steirische Herbst", optionen: ["Der Steirische Herbst", "Das Grazer Filmfestival", "Der Styriarte", "Das Literaturfestival"], fakt: "Der Steirische Herbst ist eines der bedeutendsten Avantgarde-Festivals Europas." },
 ];
 
+const EPOCH_NAMES = {
+    0: 'Mittelalter',
+    1: 'Barock & Aufklärung',
+    2: 'Industrialisierung & Moderne',
+    3: 'Weltkriege & Zwischenkriegszeit',
+    4: 'Wiederaufbau & Kulturhauptstadt'
+};
+
 let selectedEpoch = 'alle';
 let questions = [], current = 0, score = 0, answered = false;
 let questionsIdx = [];
@@ -126,7 +134,7 @@ function showQuestion() {
     if (current >= questions.length) { showResult(); return; }
     answered = false; /* Antwortstatus zurücksetzen */
     const q = questions[current];
-    document.getElementById('q-epoch-tag').textContent = 'Epoche ' + q.epochLabel;
+    document.getElementById('q-epoch-tag').textContent = 'Epoche ' + (EPOCH_NAMES[q.epoche] || q.epochLabel);
     document.getElementById('question-text').textContent = q.frage;
     document.getElementById('q-counter').textContent = `${current + 1} / ${questions.length}`;
     document.getElementById('score-badge').textContent = `Punkte: ${score}`;

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum – Das GrazQuiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div style="display:flex; align-items:center; gap:1rem;">
+            <div>
+                <div class="logo-title">Das GrazQuiz</div>
+                <div class="logo-sub">Impressum</div>
+            </div>
+        </div>
+        <div class="header-badge">Rechtliches</div>
+    </header>
+
+    <div class="color-stripe"></div>
+
+    <main>
+        <div class="section-title">Impressum</div>
+        <div class="card">
+            <h3>Angaben gemäß § 5 TMG</h3>
+            <p>Amela Efendic<br>
+                Graz, Österreich<br>
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Kontakt</h3>
+            <p>E-Mail: <a href="mailto:info@museumquest.at" style="color:var(--accent)">info@museumquest.at</a><br>
+                Website: <a href="index.html" style="color:var(--accent)">museumquest.local</a>
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Disclaimer</h3>
+            <p>Diese Website wurde im Rahmen eines Uni-Projekts erstellt. Die Inhalte dienen Bildungszwecken und sind
+                nicht kommerziell. Alle Daten und Bilder gehören dem GrazMuseum und wurden mit deren Zustimmung
+                verwendet.Diese PWA wurde mit KI erstellt.</p>
+        </div>
+
+        <div class="btn-row" style="justify-content:center; margin-top:1rem;">
+            <a class="btn outline" href="index.html">Zur Startseite</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; MuseumQuest 2026 · <a href="index.html">Startseite</a> · <a href="impressum.html">Impressum</a>
+    </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+
+</html>

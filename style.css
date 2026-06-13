@@ -226,7 +226,7 @@ main {
 /* ── EPOCH GRID ── */
 .epoch-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 0.65rem;
     margin-bottom: 1.5rem;
 }
@@ -236,9 +236,14 @@ main {
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 1rem 0.75rem;
+    min-height: 120px;
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .epoch-card:hover {
@@ -251,17 +256,67 @@ main {
     background: var(--dark-mid);
 }
 
+.epoch-card[data-epoch="alle"] .ep-years {
+    color: var(--accent);
+}
+
+.epoch-card[data-epoch="0"] .ep-years {
+    color: var(--accent);
+}
+
+.epoch-card[data-epoch="1"] .ep-years {
+    color: var(--accent2);
+}
+
+.epoch-card[data-epoch="2"] .ep-years {
+    color: var(--accent3);
+}
+
+.epoch-card[data-epoch="3"] .ep-years {
+    color: var(--border-lt);
+}
+
+.epoch-card[data-epoch="4"] .ep-years {
+    color: var(--muted);
+}
+
+.epoch-card[data-epoch="0"] {
+    border-color: rgba(86, 0, 143, 0.35);
+}
+
+.epoch-card[data-epoch="1"] {
+    border-color: rgba(84, 136, 5, 0.35);
+}
+
+.epoch-card[data-epoch="2"] {
+    border-color: rgba(2, 104, 151, 0.35);
+}
+
+.epoch-card[data-epoch="3"] {
+    border-color: rgba(122, 111, 102, 0.35);
+}
+
+.epoch-card[data-epoch="4"] {
+    border-color: rgba(74, 69, 63, 0.35);
+}
+
 .ep-years {
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
     font-weight: 600;
     color: var(--accent-lt);
-    margin-bottom: 3px;
+    margin-bottom: 0.45rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.2;
 }
 
 .ep-label {
     font-size: 0.68rem;
     color: var(--muted);
     letter-spacing: 0.05em;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 /* ── BUTTONS ── */
