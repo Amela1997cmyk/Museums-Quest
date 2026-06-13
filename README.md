@@ -32,6 +32,12 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
 
+# App-Installation
+- Im Header befindet sich ein Button „App installieren“.
+- Wenn der Browser die PWA unterstützt, kann die App damit auf dem Homescreen gespeichert werden.
+- Bei Smartphones erscheint der Installationsdialog oder eine Anleitung für das Hinzufügen zur Startseite.
+- Funktioniert die Installation nicht sofort, dann öffne das Browser-Menü und wähle „Zum Startbildschirm hinzufügen“ oder „App installieren“.
+
 # CSS-Highlights
 CSS-Variablen für einfache Farbverwaltung
 Responsive Design (Mobile-angepasst)

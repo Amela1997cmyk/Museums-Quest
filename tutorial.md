@@ -406,4 +406,35 @@ Kürzlich wurde im `app.js` eine einfache Session‑Wiederaufnahme ergänzt. Zie
 - **Wann gelöscht wird:**
   - bei `restartQuiz()` wird die Session entfernt, sodass ein komplett neuer Durchlauf möglich ist.
 
-- **Hinweis:** Die Implementierung nutzt `sessionStorage` (Daten bleiben nur in diesem Tab). 
+- **Hinweis:** Die Implementierung nutzt `sessionStorage` (Daten bleiben nur in diesem Tab).
+
+---
+
+## ✨ Neue Änderungen im Projekt
+
+Hier sind die zuletzt hinzugefügten Änderungen, die das Projekt noch besser als PWA machen:
+
+- **Impressumsseite erstellt**
+  - `impressum.html` wurde ergänzt
+  - der Footer in `index.html` verlinkt jetzt zum Impressum
+
+- **Installationsbutton für die PWA**
+  - Button `App installieren` wurde in den Header verschoben
+  - er ist nun immer sichtbar und führt zur PWA-Installation
+  - wenn die automatische Installation nicht möglich ist, zeigt der Button einen Hinweis oder eine Browser-Aktion an
+
+- **App-Icon verbessert**
+  - stattdessen wird jetzt `Uhrturm.png` als Icon verwendet
+  - `manifest.json` wurde aktualisiert, um das richtige Symbol zu laden
+  - `index.html` nutzt `Uhrturm.png` als Favicon und `apple-touch-icon`
+
+- **Responsive Epoche-Karten**
+  - lange Epochenamen brechen sauber um
+  - das Grid passt sich auf kleinen Bildschirmen besser an
+  - jeder Epoche-Karte wurde ein Farbakzent aus dem Seiten-Design gegeben
+
+- **Service Worker & Offline-Caching**
+  - `service-worker.js` speichert die wichtigsten Dateien
+  - so funktioniert die App auch offline oder mit schlechter Verbindung
+
+Diese Änderungen machen das Projekt nutzerfreundlicher und sorgen dafür, dass es auf Mobilgeräten besser installiert und genutzt werden kann. 

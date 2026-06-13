@@ -234,7 +234,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     if (installBtn) {
-        installBtn.style.display = 'inline-block';
+        installBtn.style.display = 'inline-flex';
     }
 });
 
@@ -263,7 +263,7 @@ window.addEventListener('appinstalled', () => {
 });
 
 window.addEventListener('load', () => {
-    if (window.matchMedia('(display-mode: standalone)').matches && installBtn) {
+    if (installBtn && window.matchMedia('(display-mode: standalone)').matches) {
         installBtn.style.display = 'none';
     }
 });
