@@ -240,21 +240,30 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 if (installBtn) {
     installBtn.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        if (choice.outcome === 'accepted') {
-            console.log('App install accepted');
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const choice = await deferredPrompt.userChoice;
+            if (choice.outcome === 'accepted') {
+                console.log('App install accepted');
+            } else {
+                console.log('App install dismissed');
+            }
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
         } else {
-            console.log('App install dismissed');
+            alert('Installation kann hier nicht automatisch gestartet werden. Bitte nutze die Option "Zum Startbildschirm hinzufügen" im Browser-Menü.');
         }
-        deferredPrompt = null;
-        installBtn.style.display = 'none';
     });
 }
 
 window.addEventListener('appinstalled', () => {
     if (installBtn) {
+        installBtn.style.display = 'none';
+    }
+});
+
+window.addEventListener('load', () => {
+    if (window.matchMedia('(display-mode: standalone)').matches && installBtn) {
         installBtn.style.display = 'none';
     }
 });
