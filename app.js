@@ -269,7 +269,16 @@ window.addEventListener('load', () => {
 });
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
+    navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registriert:', reg.scope || reg))
+        .catch(err => console.warn('Service Worker Registration fehlgeschlagen:', err));
+} else {
+    console.log('Service Worker nicht unterstützt in diesem Browser');
+}
+
+// iOS: beforeinstallprompt wird nicht unterstützt
+if (!('onbeforeinstallprompt' in window)) {
+    console.log('Hinweis: `beforeinstallprompt` wird in diesem Browser nicht unterstützt (z.B. iOS Safari).');
 }
 
 // try to restore an in-progress session (uses sessionStorage)
