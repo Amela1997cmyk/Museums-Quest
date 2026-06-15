@@ -1,10 +1,10 @@
 const CACHE_NAME = 'graz-quiz-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/impressum.html',
-    '/manifest.json',
-    '/icon.png',
+    './',
+    'index.html',
+    'impressum.html',
+    'manifest.json',
+    'Uhrturm.png',
     'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap'
 ];
 
@@ -64,7 +64,7 @@ self.addEventListener('fetch', event => {
                 .catch(() => {
                     // Offline: Fallback
                     console.warn('Offline – versuche Cache zu nutzen');
-                    return caches.match('/index.html');
+                    return caches.match('index.html');
                 });
         })
     );
