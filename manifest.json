@@ -2,7 +2,7 @@
   "name": "Das GrazQuiz",
   "short_name": "GrazQuiz",
   "description": "Quiz über die Geschichte von Graz – basierend auf der Ausstellung 360 GRAZ des GrazMuseums",
-  "start_url": "/",
+  "start_url": "https://amela1997cmyk.github.io/Museums-Quest/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0d0010",
