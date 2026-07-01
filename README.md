@@ -33,7 +33,7 @@ if ('serviceWorker' in navigator) {
 }
 
 # App-Installation
-- Im Header befindet sich ein Button „App installieren“.
+- Im Header befindet sich ein Button „App installieren“. Funktioniert nur auf Windows und Android Systemen.
 - Wenn der Browser die PWA unterstützt, kann die App damit auf dem Homescreen gespeichert werden.
 - Bei Smartphones erscheint der Installationsdialog oder eine Anleitung für das Hinzufügen zur Startseite.
 - Funktioniert die Installation nicht sofort, dann öffne das Browser-Menü und wähle „Zum Startbildschirm hinzufügen“ oder „App installieren“.
