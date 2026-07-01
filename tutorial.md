@@ -126,7 +126,7 @@ Das Quiz zeigt:
 5 Karten mit Text zur Geschichte von Graz (1128–2003)
 
 #### **Panel 3: Über** (`#panel-ueber`)
-Info über die App und das Museum
+Info über die App und das Quiz
 
 ---
 

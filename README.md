@@ -4,7 +4,7 @@
 Das ist eine Progressive Web App (PWA) über die Geschichte von Graz. Hier ist ein Überblick:
 
 # Struktur & Layout
-- Header: Logo und Badge (GrazMuseum)
+- Header: Logo und Badge (GrazQuiz)
 - Hero-Bereich: 5 Bilder aus Graz mit überlagerndem Text (1128–2003)
 - Navigation: 3 Tabs – Quiz, Epochen, Über
 
@@ -46,4 +46,4 @@ CSS-Variablen für einfache Farbverwaltung
 Responsive Design (Mobile-angepasst)
 Fade-In-Animationen
 Farbcodierung: Grün = richtig, Rot = falsch, Lila = Hauptakzent
-Kurz: Ein interaktives Museum-Quiz über Graz' Geschichte mit modernem Dark-Mode-Design! 🏛️
+Kurz: Ein interaktives Quiz über Graz' Geschichte mit modernem Dark-Mode-Design! 🏛️
